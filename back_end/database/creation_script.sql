@@ -2,9 +2,9 @@ CREATE DATABASE IF NOT EXISTS tta_bdd;
 
 USE tta_bdd;
 
-CREATE USER 'administrateur'@'localhost' IDENTIFIED BY 'MotDePasseUltraSecure123!';
+CREATE USER IF NOT EXISTS 'administrateur'@'localhost' IDENTIFIED BY 'MotDePasseUltraSecure123!';
 
-GRANT ALL PRIVILEGES ON tta_bdd.* TO 'admin'@'localhost';
+GRANT ALL PRIVILEGES ON tta_bdd.* TO 'administrateur'@'localhost';
 
 FLUSH PRIVILEGES;
 
@@ -34,7 +34,7 @@ CREATE TABLE artisan (
    artisan_nom VARCHAR(250) NOT NULL,
    artisan_email VARCHAR(250) NOT NULL,
    artisan_site VARCHAR(250),
-   artisan_apropos VARCHAR(1000) NOT NULL,
+   artisan_apropos TEXT NOT NULL,
    artisan_note DECIMAL(2,1) NOT NULL,
    artisan_top BOOLEAN NOT NULL,
    Id_specialite INT NOT NULL,
@@ -64,7 +64,7 @@ CREATE TABLE import_artisan (
   artisan_nom VARCHAR(250),
   artisan_email VARCHAR(250),
   artisan_site VARCHAR(250),
-  artisan_apropos VARCHAR(1000),
+  artisan_apropos TEXT,
   artisan_note DECIMAL(2,1),
   artisan_top BOOLEAN,
   specialite_libelle VARCHAR(150),
@@ -77,27 +77,36 @@ SHOW VARIABLES LIKE 'secure_file_priv';
 
 LOAD DATA INFILE 'C:/ProgramData/MySQL/MySQL Server 8.0/Uploads/ville.csv'
 INTO TABLE import_ville
-CHARACTER SET latin1  
+CHARACTER SET utf8mb4  
 FIELDS TERMINATED BY ','  
-LINES TERMINATED BY '\n';
+LINES TERMINATED BY '\r\n'
+IGNORE 1 ROWS
+(ville_nom);
 
 LOAD DATA INFILE 'C:/ProgramData/MySQL/MySQL Server 8.0/Uploads/categorie.csv'  
 INTO TABLE import_categorie
-CHARACTER SET latin1  
+CHARACTER SET utf8mb4  
 FIELDS TERMINATED BY ','  
-LINES TERMINATED BY '\n';
+LINES TERMINATED BY '\r\n'
+IGNORE 1 ROWS
+(categorie_libelle);
 
 LOAD DATA INFILE 'C:/ProgramData/MySQL/MySQL Server 8.0/Uploads/specialite.csv'  
 INTO TABLE import_specialite
-CHARACTER SET latin1
+CHARACTER SET utf8mb4
 FIELDS TERMINATED BY ','  
-LINES TERMINATED BY '\n';
+LINES TERMINATED BY '\r\n'
+IGNORE 1 ROWS
+(specialite_libelle, categorie_libelle);
 
-LOAD DATA INFILE 'C:/ProgramData/MySQL/MySQL Server 8.0/Uploads/artisan.csv'
+LOAD DATA LOCAL INFILE 'C:/ProgramData/MySQL/MySQL Server 8.0/Uploads/artisan.csv'
 INTO TABLE import_artisan
-CHARACTER SET latin1
-FIELDS TERMINATED BY ','  
-LINES TERMINATED BY '\n';
+CHARACTER SET utf8mb4
+FIELDS TERMINATED BY ',' 
+ENCLOSED BY '"'
+LINES TERMINATED BY '\r\n'
+IGNORE 1 ROWS
+(artisan_nom, artisan_email, artisan_site, artisan_apropos, artisan_note, artisan_top, specialite_libelle, ville_nom);
 
 -- Créer les relations et importer dans les vraies tables
 
