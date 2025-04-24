@@ -2,7 +2,7 @@ const { DataTypes } = require("sequelize");
 const sequelize = require("../config/database");
 
 const Artisan = sequelize.define(
-  "Artisan",
+  "artisan",
   {
     artisan_nom: { type: DataTypes.STRING, allowNull: false },
     artisan_email: {
@@ -17,9 +17,9 @@ const Artisan = sequelize.define(
       type: DataTypes.DECIMAL(3, 1),
       validate: { min: 0.0, max: 5.0 },
     },
-    top: { type: DataTypes.BOOLEAN, defaultValue: false },
-    specialite: { type: DataTypes.STRING },
-    ville: { type: DataTypes.STRING },
+    artisan_top: { type: DataTypes.BOOLEAN, defaultValue: false },
+    specialite_libelle: { type: DataTypes.STRING },
+    ville_nom: { type: DataTypes.STRING },
   },
   {
     timestamps: true,
