@@ -18,3 +18,12 @@ exports.getArtisans = async (req, res) => {
     res.status(500).json({ message: "Erreur serveur", erreur: err.message });
   }
 };
+
+exports.getArtisanById = async (req, res) => {
+  try {
+    const artisan = await artisanService.getArtisanById();
+    res.status(200).json(artisan);
+  } catch (err) {
+    res.status(500).json({ message: "Erreur serveur", erreur: err.message });
+  }
+};
