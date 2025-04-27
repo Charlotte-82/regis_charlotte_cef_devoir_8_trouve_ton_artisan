@@ -4,6 +4,11 @@ const sequelize = require("../config/database");
 const Artisan = sequelize.define(
   "artisan",
   {
+    id_artisan: {
+      type: DataTypes.INTEGER,
+      primaryKey: true,
+      autoIncrement: true,
+    },
     artisan_nom: { type: DataTypes.STRING, allowNull: false },
     artisan_email: {
       type: DataTypes.STRING,
@@ -18,8 +23,8 @@ const Artisan = sequelize.define(
       validate: { min: 0.0, max: 5.0 },
     },
     artisan_top: { type: DataTypes.BOOLEAN, defaultValue: false },
-    specialite_libelle: { type: DataTypes.STRING },
-    ville_nom: { type: DataTypes.STRING },
+    specialite_libelle: { type: DataTypes.STRING, field: "id_specialite" },
+    ville_nom: { type: DataTypes.STRING, field: "id_ville" },
   },
   {
     timestamps: true,

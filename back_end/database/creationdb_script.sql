@@ -39,10 +39,12 @@ CREATE TABLE artisan (
    artisan_top BOOLEAN NOT NULL,
    Id_specialite INT NOT NULL,
    Id_ville INT NOT NULL,
+   createdAt DATETIME DEFAULT CURRENT_TIMESTAMP,
+   updatedAt DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
    PRIMARY KEY(Id_artisan),
    UNIQUE(artisan_email),
    FOREIGN KEY(Id_specialite) REFERENCES specialite(Id_specialite),
-   FOREIGN KEY(Id_ville) REFERENCES ville(Id_ville)
+   FOREIGN KEY(Id_ville) REFERENCES ville(Id_ville),
 );
 
 -- Créer des tables temporaires le temps de faire les relations

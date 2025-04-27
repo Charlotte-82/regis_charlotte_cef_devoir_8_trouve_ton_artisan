@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express();
-const sequelize = require("./config/database");
-const artisanRoutes = require("./routes/artisanRoutes");
+const sequelize = require("../config/database");
+const artisanRoutes = require("../routes/artisanRoutes");
 
 app.use(express.json());
 app.use("/api/artisans", artisanRoutes);
