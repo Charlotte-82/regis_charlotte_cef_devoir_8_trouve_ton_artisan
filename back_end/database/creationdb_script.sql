@@ -11,6 +11,8 @@ FLUSH PRIVILEGES;
 CREATE TABLE ville (
    Id_ville INT AUTO_INCREMENT,
    ville_nom VARCHAR(50) NOT NULL,
+   createdAt DATETIME DEFAULT CURRENT_TIMESTAMP,
+   updatedAt DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
    PRIMARY KEY(Id_ville),
    UNIQUE(ville_nom)
 );
@@ -18,6 +20,8 @@ CREATE TABLE ville (
 CREATE TABLE categorie (
    Id_categorie INT AUTO_INCREMENT,
    categorie_libelle VARCHAR(50) NOT NULL,
+   createdAt DATETIME DEFAULT CURRENT_TIMESTAMP,
+   updatedAt DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
    PRIMARY KEY(Id_categorie)
 );
 
@@ -25,6 +29,8 @@ CREATE TABLE specialite (
    Id_specialite INT AUTO_INCREMENT,
    specialite_libelle VARCHAR(150) NOT NULL,
    Id_categorie INT NOT NULL,
+   createdAt DATETIME DEFAULT CURRENT_TIMESTAMP,
+   updatedAt DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
    PRIMARY KEY(Id_specialite),
    FOREIGN KEY(Id_categorie) REFERENCES categorie(Id_categorie)
 );
@@ -39,10 +45,12 @@ CREATE TABLE artisan (
    artisan_top BOOLEAN NOT NULL,
    Id_specialite INT NOT NULL,
    Id_ville INT NOT NULL,
+   createdAt DATETIME DEFAULT CURRENT_TIMESTAMP,
+   updatedAt DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
    PRIMARY KEY(Id_artisan),
    UNIQUE(artisan_email),
    FOREIGN KEY(Id_specialite) REFERENCES specialite(Id_specialite),
-   FOREIGN KEY(Id_ville) REFERENCES ville(Id_ville)
+   FOREIGN KEY(Id_ville) REFERENCES ville(Id_ville),
 );
 
 -- Créer des tables temporaires le temps de faire les relations
