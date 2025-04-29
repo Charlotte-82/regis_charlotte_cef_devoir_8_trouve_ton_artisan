@@ -1,11 +1,32 @@
 const artisanService = require("../services/artisanServices");
 
+// exports.creerArtisan = async (req, res) => {
+//   try {
+//     const nouvelArtisan = await artisanService.creerArtisanAvecRelations(
+//       req.body
+//     );
+//     res.status(201).json(nouvelArtisan);
+//   } catch (err) {
+//     console.error("L'artisan n'a pas pu être créé :", err);
+//     res.status(500).json({ message: "Erreur serveur", erreur: err.message });
+//   }
+// };
+
 exports.creerArtisan = async (req, res) => {
   try {
-    const nouvelArtisan = await artisanService.creerArtisan(req.body);
+    const nouvelArtisan = await artisanService.creerArtisanAvecRelations(
+      req.body
+    );
     res.status(201).json(nouvelArtisan);
   } catch (err) {
     console.error("L'artisan n'a pas pu être créé :", err);
+
+    // Si le message vient d’une erreur métier connue :
+    if (err.message.includes("Cette spécialité n'existe pas")) {
+      return res.status(400).json({ message: err.message });
+    }
+
+    // Sinon, erreur serveur par défaut
     res.status(500).json({ message: "Erreur serveur", erreur: err.message });
   }
 };

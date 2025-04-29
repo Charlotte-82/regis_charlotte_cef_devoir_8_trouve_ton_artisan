@@ -23,9 +23,23 @@ const Artisan = sequelize.define(
       validate: { min: 0.0, max: 5.0 },
     },
     artisan_top: { type: DataTypes.BOOLEAN, defaultValue: false },
-    specialite_libelle: { type: DataTypes.STRING, field: "id_specialite" },
-    ville_nom: { type: DataTypes.STRING, field: "id_ville" },
+    Id_specialite: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: "specialite",
+        key: "Id_specialite",
+      },
+    },
+    Id_ville: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: "ville",
+        key: "Id_ville",
+      },
+    },
   },
+  // specialite_libelle: { type: DataTypes.STRING, field: "id_specialite" },
+  // ville_nom: { type: DataTypes.STRING, field: "id_ville" },
   {
     timestamps: true,
     tableName: "artisan",

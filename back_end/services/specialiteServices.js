@@ -1,7 +1,23 @@
+const Categorie = require("../models/categorieModel");
 const Specialite = require("../models/specialiteModel");
 
-exports.creerSpecialite = async (data) => {
-  return await Specialite.create(data);
+exports.creerSpecialite = async ({ specialite_libelle, categorie_libelle }) => {
+  const categorie = await Categorie.findOne({
+    where: { categorie_libelle },
+  });
+
+  console.log("Catégorie trouvée :", categorie?.dataValues);
+
+  if (!categorie) {
+    throw new Error("Cette catégorie n'existe pas. Créez-la d'abord.");
+  }
+
+  const nouvelleSpecialite = await Specialite.create({
+    specialite_libelle,
+    Id_categorie: categorie.Id_categorie,
+  });
+
+  return nouvelleSpecialite;
 };
 
 exports.getToutesSpecialites = async () => {
