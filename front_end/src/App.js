@@ -1,16 +1,16 @@
-import "./App.css";
+import { Routes, Route } from "react-router-dom";
+import Header from "../src/components/Header";
+import Home from "../src/pages/Home";
+import FicheArtisan from "../src/pages/FicheArtisan";
+import Footer from "../src/components/Footer";
 
 function App() {
   return (
     <div className="App">
-      <NavBar />
+      <Header />
       <Routes>
-        <Route path="/" element={<Home />}>
-          Accueil
-        </Route>
-        <Route path="/portfolio" element={<FicheArtisan />}>
-          Portfolio
-        </Route>
+        <Route path="/" element={<Home />}></Route>
+        <Route path="/ficheartisan" element={<FicheArtisan />}></Route>
       </Routes>
       <Footer />
     </div>
