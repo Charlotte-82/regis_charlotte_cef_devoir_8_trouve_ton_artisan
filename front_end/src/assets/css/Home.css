@@ -1,0 +1,26 @@
+.chevronMenu {
+  width: 0.6em;
+  margin-left: 1em;
+}
+
+h1 {
+  margin-left: 0.3em;
+  color: #00497c;
+  font-weight: 700;
+}
+
+.hrTitre2 {
+  color: #0074c7;
+  border: 4px solid #0074c7;
+  opacity: 1;
+  width: 2.5em;
+}
+
+.imageHome1 {
+  width: 30em;
+  margin-right: 10em;
+}
+
+h2 {
+  color: #00497c;
+}
