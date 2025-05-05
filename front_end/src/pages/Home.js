@@ -30,7 +30,7 @@ function Home() {
           <p
             style={{
               fontSize: "larger",
-              marginRight: "10em",
+              marginRight: "5em",
               fontWeight: "500",
               lineHeight: "1em",
             }}
@@ -39,6 +39,10 @@ function Home() {
             les talentueux artisans. Choisissez un métier selon vos besoins, une
             localité et expliquez votre projet pour le voir devenir réalité !
           </p>
+          <button className="boutonDecouvrir">
+            Découvrir
+            <i className="bi bi-arrow-right" style={{ marginLeft: "2em" }}></i>
+          </button>
         </div>
         <span>
           <img
@@ -47,6 +51,15 @@ function Home() {
             className="imageHome1"
           ></img>
         </span>
+      </div>
+      <div className="d-flex justify-content-between align-items-start px-3 py-2">
+        <div
+          className="d-flex flex-column justify-items-start align-items-start"
+          style={{ marginLeft: "5em" }}
+        >
+          <hr className="hrTitre2" />
+          <h2>Artisans du mois</h2>
+        </div>
       </div>
     </div>
   );
