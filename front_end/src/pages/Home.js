@@ -78,7 +78,7 @@ function Home() {
           >
             <img
               src={Boulanger}
-              alt="mains de boualnger qui tiennent une baguette"
+              alt="mains de boulanger qui tiennent une baguette"
               style={{
                 width: "100%",
                 height: "auto",
@@ -238,7 +238,14 @@ function Home() {
           marginBottom: "2em",
         }}
       >
-        <button className="boutonBasPage">Voir tous les artisans</button>
+        <button className="boutonBasPage">
+          <a
+            href="/categoriepage"
+            style={{ textDecoration: "none", color: "white" }}
+          >
+            Voir tous les artisans
+          </a>
+        </button>
       </div>
     </div>
   );

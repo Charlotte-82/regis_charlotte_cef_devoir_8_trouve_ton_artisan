@@ -45,7 +45,7 @@ function Header() {
         </div>
         <div className="menu">
           <a
-            href="#"
+            href="/alimpage"
             className="me-3 text-decoration-none"
             style={{ color: "#384050" }}
           >
