@@ -1,5 +1,6 @@
 import React from "react";
 import Chevron from "../assets/images/chevron-droit.png";
+import ArtisansAlim from "../components/ArtisanAlimentation";
 
 function AlimPage() {
   return (
@@ -39,8 +40,26 @@ function AlimPage() {
             className="chevronMenu"
           ></img>
         </span>
-        <h1>Catégorie d'artisanat</h1>
+        <a
+          href="/alimpage"
+          style={{
+            color: "#0074c7",
+            marginLeft: "1em",
+            textDecoration: "none",
+          }}
+        >
+          Alimentation
+        </a>
+        <span>
+          <img
+            src={Chevron}
+            alt="icône de chevron vers la droite"
+            className="chevronMenu"
+          ></img>
+        </span>
+        <h1>Alimentation</h1>
       </div>
+      <ArtisansAlim />
     </div>
   );
 }

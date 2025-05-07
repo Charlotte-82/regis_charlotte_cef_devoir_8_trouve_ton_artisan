@@ -1,25 +1,35 @@
 import { useEffect, useState } from "react";
-import { getArtisansAlimentation } from "../services/AlimentationPageServices";
+import { getArtisansParCategorie } from "../services/artisansServices";
 
-function ListeArtisanAlimentation() {
-  const [artisansAlim, setArtisansAlim] = useState([]);
+function ArtisansAlim() {
+  const [artisans, setArtisans] = useState([]);
 
   useEffect(() => {
-    getArtisansAlimentation()
-      .then((res) => setArtisansAlim(res.data))
-      .catch((err) => console.error("Erreur :", err));
+    getArtisansParCategorie("alimentation")
+      .then((res) => setArtisans(res.data))
+      .catch((err) =>
+        console.error("Erreur lors du chargement des artisans :", err)
+      );
   }, []);
 
   return (
     <div>
-      {artisansAlim.map((item) => (
-        <div key={item.id}>
-          <h3>{item.titre}</h3>
-          <p>{item.texte}</p>
-        </div>
-      ))}
+      <hr className="hrTitre2" style={{ marginLeft: "5em" }} />
+      <h2 style={{ marginLeft: "2.5em" }}>
+        Artisans de la catégorie "Alimentation"
+      </h2>
+      {artisans.length === 0 ? (
+        <p style={{ marginLeft: "5em" }}>Aucun artisan trouvé.</p>
+      ) : (
+        artisans.map((artisan) => (
+          <div key={artisan.id} style={{ marginBottom: "20px" }}>
+            <h3>{artisan.nom}</h3>
+            <p>{artisan.apropos}</p>
+          </div>
+        ))
+      )}
     </div>
   );
 }
 
-export default ListeArtisanAlimentation;
+export default ArtisansAlim;

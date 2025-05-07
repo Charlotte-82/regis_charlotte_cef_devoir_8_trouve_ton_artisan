@@ -2,6 +2,8 @@ const Artisan = require("../models/artisanModel");
 const Specialite = require("../models/specialiteModel");
 const Ville = require("../models/villeModel");
 const Categorie = require("../models/categorieModel");
+const { QueryTypes } = require("sequelize");
+const sequelize = require("../config/database");
 
 Artisan.belongsTo(Specialite, { foreignKey: "Id_specialite" });
 Artisan.belongsTo(Ville, { foreignKey: "Id_ville" });
@@ -81,4 +83,32 @@ exports.deleteArtisan = async (id) => {
   if (!artisan) return null;
   await artisan.destroy();
   return artisan;
+};
+
+exports.fetchTopArtisans = async () => {
+  const sql = `
+    SELECT 
+      a.artisan_image AS image,
+      a.artisan_nom AS nom,
+      a.artisan_note AS note,
+      s.specialite_libelle AS specialite,
+      v.ville_nom AS ville
+    FROM artisan a
+    JOIN specialite s ON a.Id_specialite = s.Id_specialite
+    JOIN ville v ON a.Id_ville = v.Id_ville
+    WHERE a.artisan_top = true
+    ORDER BY a.artisan_note DESC
+    LIMIT 3
+  `;
+
+  try {
+    const results = await sequelize.query(sql, {
+      type: QueryTypes.SELECT,
+    });
+
+    return results;
+  } catch (error) {
+    console.error("Erreur SQL brute :", error);
+    return [];
+  }
 };

@@ -28,6 +28,7 @@ router.patch(
 );
 
 router.get("/", artisanControllers.getArtisans);
+router.get("/top", artisanControllers.getTopArtisans);
 router.get("/:id", artisanControllers.getArtisanById);
 
 module.exports = router;

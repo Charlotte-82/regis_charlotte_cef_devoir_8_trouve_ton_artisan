@@ -1,14 +1,13 @@
 import React from "react";
 import "../assets/css/Home.css";
 import Chevron from "../assets/images/chevron-droit.png";
-import ArtisanMains from "../assets/images/ArtisanMains.jpg";
-import Boulanger from "../assets/images/boulanger.jpg";
-import Chauffe from "../assets/images/chauffagiste.jpg";
-import Chocolat from "../assets/images/chocolaterie.jpg";
+import TopArtisans from "../components/ArtisanTop";
 
 function Home() {
   return (
     <div style={{ marginTop: "1em" }}>
+      <div className="banner"></div>
+
       <a
         href="/"
         style={{ color: "#0074c7", marginLeft: "1em", textDecoration: "none" }}
@@ -29,7 +28,7 @@ function Home() {
           style={{ marginLeft: "5em" }}
         >
           <hr className="hrTitre2" />
-          <h2>Fonctionnement du site</h2>
+          <h2>Comment trouver votre artisan ?</h2>
           <p
             style={{
               fontSize: "larger",
@@ -42,195 +41,63 @@ function Home() {
             les talentueux artisans. Choisissez un métier selon vos besoins, une
             localité et expliquez votre projet pour le voir devenir réalité !
           </p>
+          <p
+            style={{
+              fontSize: "larger",
+              marginRight: "5em",
+              fontWeight: "500",
+              lineHeight: "1em",
+            }}
+          >
+            1. Choisissez la catégorie d’artisanat dans le menu.
+          </p>
+          <p
+            style={{
+              fontSize: "larger",
+              marginRight: "5em",
+              fontWeight: "500",
+              lineHeight: "1em",
+            }}
+          >
+            2. Choisissez un artisan selon sa spécialité.
+          </p>
+          <p
+            style={{
+              fontSize: "larger",
+              marginRight: "5em",
+              fontWeight: "500",
+              lineHeight: "1em",
+            }}
+          >
+            3. Contactez-le via le formulaire de contact.
+          </p>
+          <p
+            style={{
+              fontSize: "larger",
+              marginRight: "5em",
+              fontWeight: "500",
+              lineHeight: "1em",
+            }}
+          >
+            {" "}
+            4. Une réponse vous sera apportée sous 48h.
+          </p>
           <button className="boutonDecouvrir">
-            Découvrir
+            <a
+              href="/categoriepage"
+              style={{ textDecoration: "none", color: "#00497c" }}
+            >
+              Rechercher un artisan
+            </a>
             <i className="bi bi-arrow-right" style={{ marginLeft: "2em" }}></i>
           </button>
         </div>
-        <span>
-          <img
-            src={ArtisanMains}
-            alt="mains d'artisan tenant un rabot et travaillant le bois"
-            className="imageHome1"
-          ></img>
-        </span>
       </div>
 
       <hr className="hrTitre2" style={{ marginLeft: "6em" }} />
       <h2 style={{ marginLeft: "3em" }}>Artisans du mois</h2>
 
-      <div
-        className="d-flex justify-content-between px-3 py-4"
-        style={{ gap: "20px" }}
-      >
-        {/* Top Artisan 1 */}
-        <div
-          className="d-flex flex-column p-3"
-          style={{ width: "30%", height: "35em" }}
-        >
-          <div
-            style={{
-              position: "relative",
-              display: "flex",
-              alignItems: "flex-start",
-              height: "100px",
-            }}
-          >
-            <img
-              src={Boulanger}
-              alt="mains de boulanger qui tiennent une baguette"
-              style={{
-                width: "100%",
-                height: "auto",
-                objectFit: "cover",
-                marginRight: "20px",
-                zIndex: 1,
-              }}
-            />
-
-            <div
-              style={{
-                position: "absolute",
-                top: "220%",
-                left: "60px",
-                height: "7em",
-                width: "89%",
-                borderLeft: "solid 2px #0074c7",
-                zIndex: 2,
-              }}
-            >
-              <h3
-                style={{
-                  zIndex: 1,
-                  textAlign: "right",
-                  paddingTop: "3em",
-                  color: "#00497c",
-                }}
-              >
-                Au Pain Chaud
-              </h3>
-              <p>À propos</p>
-              <button className="boutonDecouvrir">
-                Découvrir
-                <i
-                  className="bi bi-arrow-right"
-                  style={{ marginLeft: "2em" }}
-                ></i>
-              </button>
-            </div>
-          </div>
-        </div>
-
-        {/* Top Artisan 2 */}
-        <div className="d-flex flex-column p-3" style={{ width: "30%" }}>
-          <div
-            style={{
-              position: "relative",
-              display: "flex",
-              alignItems: "flex-start",
-              height: "100px",
-            }}
-          >
-            <img
-              src={Chauffe}
-              alt="mains de chauffagiste qui règle une chaudière"
-              style={{
-                width: "100%",
-                height: "auto",
-                objectFit: "cover",
-                marginRight: "20px",
-                zIndex: 1,
-              }}
-            />
-
-            <div
-              style={{
-                position: "absolute",
-                top: "220%",
-                left: "60px",
-                height: "7em",
-                width: "89%",
-                borderLeft: "solid 2px #0074c7",
-                zIndex: 2,
-              }}
-            >
-              <h3
-                style={{
-                  zIndex: 1,
-                  textAlign: "right",
-                  paddingTop: "3em",
-                  color: "#00497c",
-                }}
-              >
-                Orville Salmons
-              </h3>
-              <p>À propos</p>
-              <button className="boutonDecouvrir">
-                Découvrir
-                <i
-                  className="bi bi-arrow-right"
-                  style={{ marginLeft: "2em" }}
-                ></i>
-              </button>
-            </div>
-          </div>
-        </div>
-
-        {/* Top Artisan 3 */}
-        <div className="d-flex flex-column p-3" style={{ width: "30%" }}>
-          <div
-            style={{
-              position: "relative",
-              display: "flex",
-              alignItems: "flex-start",
-              height: "100px",
-            }}
-          >
-            <img
-              src={Chocolat}
-              alt="mains de chocolatier qui saupoudre des brisures de noisette sur une tablette"
-              style={{
-                width: "100%",
-                height: "auto",
-                objectFit: "cover",
-                marginRight: "20px",
-                zIndex: 1,
-              }}
-            />
-
-            <div
-              style={{
-                position: "absolute",
-                top: "220%",
-                left: "60px",
-                height: "7em",
-                width: "89%",
-                borderLeft: "solid 2px #0074c7",
-                zIndex: 2,
-              }}
-            >
-              <h3
-                style={{
-                  zIndex: 1,
-                  textAlign: "right",
-                  paddingTop: "3em",
-                  color: "#00497c",
-                }}
-              >
-                Chocolaterie Labbé
-              </h3>
-              <p>À propos</p>
-              <button className="boutonDecouvrir">
-                Découvrir
-                <i
-                  className="bi bi-arrow-right"
-                  style={{ marginLeft: "2em" }}
-                ></i>
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
+      <TopArtisans />
       <div
         style={{
           display: "flex",

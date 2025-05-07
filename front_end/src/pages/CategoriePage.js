@@ -43,24 +43,23 @@ function CategoriePage() {
             className="chevronMenu"
           ></img>
         </span>
-        <h1>Catégorie d'artisanat</h1>
+        <h1>Catégories d'artisanat</h1>
       </div>
       <div
         className="d-flex justify-content-around px-3 py-4"
         style={{ gap: "20px" }}
       >
-        <div class="card" style={{ width: "35%" }}>
-          <img
-            src={AlimCat}
-            class="card-img-top"
-            alt="une série de verrines sur un buffet remplies de nourriture"
-          />
+        <div class="card" style={{ width: "35%", border: "none" }}>
           <div class="card-body">
+            <hr className="hrTitre2" />
             <h2 class="card-title" style={{ color: "#00497c" }}>
               Alimentation
             </h2>
             <button className="boutonDecouvrir">
-              <a href="/alimpage" style={{ textDecoration: "none" }}>
+              <a
+                href="/alimpage"
+                style={{ textDecoration: "none", color: "#00497c" }}
+              >
                 Découvrir
               </a>
               <i
@@ -69,14 +68,16 @@ function CategoriePage() {
               ></i>
             </button>
           </div>
-        </div>
-        <div class="card" style={{ width: "35%" }}>
           <img
-            src={FabCat}
+            src={AlimCat}
             class="card-img-top"
-            alt="un atelier composé d'un bureau surlequl se trouvent un ordinateur et différentes machines et derrière le mur est recouvert d'un étagères pleine de différents matériaux"
+            alt="une série de verrines sur un buffet remplies de nourriture"
           />
+        </div>
+
+        <div class="card" style={{ width: "35%", border: "none" }}>
           <div class="card-body">
+            <hr className="hrTitre2" />
             <h2 class="card-title" style={{ color: "#00497c" }}>
               Fabrication
             </h2>
@@ -88,19 +89,21 @@ function CategoriePage() {
               ></i>
             </button>
           </div>
+          <img
+            src={FabCat}
+            class="card-img-top"
+            alt="un atelier composé d'un bureau surlequl se trouvent un ordinateur et différentes machines et derrière le mur est recouvert d'un étagères pleine de différents matériaux"
+          />
         </div>
       </div>
+
       <div
         className="d-flex justify-content-around px-3 py-4"
         style={{ gap: "20px" }}
       >
-        <div class="card" style={{ width: "35%" }}>
-          <img
-            src={BatCat}
-            class="card-img-top"
-            alt="du béton en train d'être coulé"
-          />
+        <div class="card" style={{ width: "35%", border: "none" }}>
           <div class="card-body">
+            <hr className="hrTitre2" />
             <h2 class="card-title" style={{ color: "#00497c" }}>
               Bâtiment
             </h2>
@@ -112,14 +115,16 @@ function CategoriePage() {
               ></i>
             </button>
           </div>
-        </div>
-        <div class="card" style={{ width: "35%" }}>
           <img
-            src={ServCat}
+            src={BatCat}
             class="card-img-top"
-            alt="une jeune femme assise à un bureau d'accueil prête à aider les visiteurs"
+            alt="une série de verrines sur un buffet remplies de nourriture"
           />
+        </div>
+
+        <div class="card" style={{ width: "35%", border: "none" }}>
           <div class="card-body">
+            <hr className="hrTitre2" />
             <h2 class="card-title" style={{ color: "#00497c" }}>
               Services
             </h2>
@@ -131,6 +136,11 @@ function CategoriePage() {
               ></i>
             </button>
           </div>
+          <img
+            src={ServCat}
+            class="card-img-top"
+            alt="une série de verrines sur un buffet remplies de nourriture"
+          />
         </div>
       </div>
     </div>

@@ -1,17 +1,5 @@
 const artisanService = require("../services/artisanServices");
 
-// exports.creerArtisan = async (req, res) => {
-//   try {
-//     const nouvelArtisan = await artisanService.creerArtisanAvecRelations(
-//       req.body
-//     );
-//     res.status(201).json(nouvelArtisan);
-//   } catch (err) {
-//     console.error("L'artisan n'a pas pu être créé :", err);
-//     res.status(500).json({ message: "Erreur serveur", erreur: err.message });
-//   }
-// };
-
 exports.creerArtisan = async (req, res) => {
   try {
     const nouvelArtisan = await artisanService.creerArtisanAvecRelations(
@@ -71,5 +59,27 @@ exports.deleteArtisan = async (req, res) => {
   } catch (err) {
     console.error("L'artisan n'a pas pu être effacé :", err);
     res.status(500).json({ message: "Erreur serveur", erreur: err.message });
+  }
+};
+
+// exports.getTopArtisans = async (req, res) => {
+//   try {
+//     const topArtisans = await artisanService.fetchTopArtisans();
+//     console.log("Résultats récupérés :", topArtisans);
+//     res.json({ data: topArtisans });
+//   } catch (error) {
+//     console.error("Erreur dans getTopArtisans :", error);
+//     res.status(500).json({ error: "Erreur serveur" });
+//   }
+// };
+
+exports.getTopArtisans = async (req, res) => {
+  try {
+    const topArtisans = await artisanService.fetchTopArtisans();
+    console.log("Résultat reçu dans le contrôleur :", topArtisans);
+    res.json({ data: topArtisans });
+  } catch (error) {
+    console.error("Erreur dans getTopArtisans :", error);
+    res.status(500).json({ error: "Erreur serveur" });
   }
 };

@@ -59,7 +59,7 @@ function Header() {
             />
           </span>
           <a
-            href="#"
+            href="/construction"
             className="me-3 text-decoration-none"
             style={{ color: "#384050" }}
           >
@@ -73,7 +73,7 @@ function Header() {
             />
           </span>
           <a
-            href="#"
+            href="/construction"
             className="me-3 text-decoration-none"
             style={{ color: "#384050" }}
           >
@@ -87,7 +87,7 @@ function Header() {
             />
           </span>
           <a
-            href="#"
+            href="/construction"
             className="me-3 text-decoration-none"
             style={{ color: "#384050" }}
           >
