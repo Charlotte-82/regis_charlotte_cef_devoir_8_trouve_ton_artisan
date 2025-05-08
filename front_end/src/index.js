@@ -4,7 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import { BrowserRouter } from "react-router-dom";
-import "../src/assets/css/index.css";
+import "../src/assets/styles/main.scss";
 import App from "./App";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));

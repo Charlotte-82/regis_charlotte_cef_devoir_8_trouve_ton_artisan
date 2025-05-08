@@ -1,5 +1,5 @@
 import React from "react";
-import "../assets/css/Header.css";
+import "../assets/css/Header.scss";
 import Architecte from "../assets/images/architecte.png";
 import Logo from "../assets/images/Logo.png";
 import Arrow from "../assets/images/down-arrow.png";

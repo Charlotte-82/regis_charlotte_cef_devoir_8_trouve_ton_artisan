@@ -5,17 +5,10 @@ import ArtisansAlim from "../components/ArtisanAlimentation";
 function AlimPage() {
   return (
     <div>
+      {/* début entête */}
       <div style={{ marginTop: "1em" }}>
-        <a
-          href="/"
-          style={{
-            color: "#0074c7",
-            marginLeft: "1em",
-            textDecoration: "none",
-          }}
-        >
-          Accueil
-        </a>
+        {/* chemin emprunté par l'utilisateur depuis la page d'accueil */}
+        <a href="/">Accueil</a>
         <span>
           <img
             src={Chevron}
@@ -23,16 +16,7 @@ function AlimPage() {
             className="chevronMenu"
           ></img>
         </span>
-        <a
-          href="/categoriepage"
-          style={{
-            color: "#0074c7",
-            marginLeft: "1em",
-            textDecoration: "none",
-          }}
-        >
-          Catégorie
-        </a>
+        <a href="/categoriepage">Catégorie</a>
         <span>
           <img
             src={Chevron}
@@ -40,16 +24,7 @@ function AlimPage() {
             className="chevronMenu"
           ></img>
         </span>
-        <a
-          href="/alimpage"
-          style={{
-            color: "#0074c7",
-            marginLeft: "1em",
-            textDecoration: "none",
-          }}
-        >
-          Alimentation
-        </a>
+        <a href="/alimpage">Alimentation</a>
         <span>
           <img
             src={Chevron}
@@ -57,8 +32,11 @@ function AlimPage() {
             className="chevronMenu"
           ></img>
         </span>
+
+        {/* titre page */}
         <h1>Alimentation</h1>
       </div>
+      {/* fin entête */}
       <ArtisansAlim />
     </div>
   );

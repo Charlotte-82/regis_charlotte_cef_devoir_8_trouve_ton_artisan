@@ -8,17 +8,10 @@ import Chevron from "../assets/images/chevron-droit.png";
 function CategoriePage() {
   return (
     <div>
+      {/* début entête */}
       <div style={{ marginTop: "1em" }}>
-        <a
-          href="/"
-          style={{
-            color: "#0074c7",
-            marginLeft: "1em",
-            textDecoration: "none",
-          }}
-        >
-          Accueil
-        </a>
+        {/* chemin emprunté par l'utilisateur depuis la page d'accueil */}
+        <a href="/">Accueil</a>
         <span>
           <img
             src={Chevron}
@@ -26,16 +19,7 @@ function CategoriePage() {
             className="chevronMenu"
           ></img>
         </span>
-        <a
-          href="/categoriepage"
-          style={{
-            color: "#0074c7",
-            marginLeft: "1em",
-            textDecoration: "none",
-          }}
-        >
-          Catégorie
-        </a>
+        <a href="/categoriepage">Catégorie</a>
         <span>
           <img
             src={Chevron}
@@ -43,25 +27,23 @@ function CategoriePage() {
             className="chevronMenu"
           ></img>
         </span>
+
+        {/* titre page */}
         <h1>Catégories d'artisanat</h1>
       </div>
+      {/* fin entête */}
+      {/* début contenu page catégorie */}
       <div
         className="d-flex justify-content-around px-3 py-4"
         style={{ gap: "20px" }}
       >
+        {/* catégorie 1 Alimentation */}
         <div class="card" style={{ width: "35%", border: "none" }}>
           <div class="card-body">
             <hr className="hrTitre2" />
-            <h2 class="card-title" style={{ color: "#00497c" }}>
-              Alimentation
-            </h2>
+            <h2 className="card-title">Alimentation</h2>
             <button className="boutonDecouvrir">
-              <a
-                href="/alimpage"
-                style={{ textDecoration: "none", color: "#00497c" }}
-              >
-                Découvrir
-              </a>
+              <a href="/alimpage">Découvrir</a>
               <i
                 className="bi bi-arrow-right"
                 style={{ marginLeft: "2em" }}
@@ -75,14 +57,13 @@ function CategoriePage() {
           />
         </div>
 
+        {/* catégorie 2 Fabrication */}
         <div class="card" style={{ width: "35%", border: "none" }}>
           <div class="card-body">
             <hr className="hrTitre2" />
-            <h2 class="card-title" style={{ color: "#00497c" }}>
-              Fabrication
-            </h2>
+            <h2 className="card-title">Fabrication</h2>
             <button className="boutonDecouvrir">
-              Découvrir
+              <a href="/construction">Découvrir</a>
               <i
                 className="bi bi-arrow-right"
                 style={{ marginLeft: "2em" }}
@@ -97,6 +78,7 @@ function CategoriePage() {
         </div>
       </div>
 
+      {/* catégorie 3 Bâtiment */}
       <div
         className="d-flex justify-content-around px-3 py-4"
         style={{ gap: "20px" }}
@@ -104,11 +86,9 @@ function CategoriePage() {
         <div class="card" style={{ width: "35%", border: "none" }}>
           <div class="card-body">
             <hr className="hrTitre2" />
-            <h2 class="card-title" style={{ color: "#00497c" }}>
-              Bâtiment
-            </h2>
+            <h2 className="card-title">Bâtiment</h2>
             <button className="boutonDecouvrir">
-              Découvrir
+              <a href="/construction">Découvrir</a>
               <i
                 className="bi bi-arrow-right"
                 style={{ marginLeft: "2em" }}
@@ -122,14 +102,13 @@ function CategoriePage() {
           />
         </div>
 
+        {/* catégorie 4 Services */}
         <div class="card" style={{ width: "35%", border: "none" }}>
           <div class="card-body">
             <hr className="hrTitre2" />
-            <h2 class="card-title" style={{ color: "#00497c" }}>
-              Services
-            </h2>
+            <h2 className="card-title">Services</h2>
             <button className="boutonDecouvrir">
-              Découvrir
+              <a href="/construction">Découvrir</a>
               <i
                 className="bi bi-arrow-right"
                 style={{ marginLeft: "2em" }}

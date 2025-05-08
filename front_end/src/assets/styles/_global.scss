@@ -1,0 +1,72 @@
+h1 {
+  margin-left: 0.3em;
+  color: $secondary-color;
+  font-weight: 700;
+  font-family: $font-main;
+}
+
+.hrTitre2 {
+  color: $primary-color;
+  border: 4px solid $primary-color;
+  opacity: 1;
+  width: 2.5em;
+}
+
+h2 {
+  color: $secondary-color;
+  font-weight: 700;
+  margin-bottom: 0.8em;
+  font-family: $font-main;
+}
+
+p {
+  color: $tertiary-color;
+  font-family: $font-main;
+}
+
+body {
+  font-family: $font-main;
+}
+
+.chevronMenu {
+  width: 0.6em;
+  margin-left: 1em;
+}
+
+.boutonDecouvrir {
+  border: none;
+  background-color: $light-color;
+  color: $tertiary-color;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  margin-left: 5em;
+  padding-bottom: 0.8em;
+  margin-top: 1em;
+}
+
+.boutonDecouvrir:hover {
+  border-bottom: $hover-color solid 1px;
+  color: $hover-color;
+}
+
+a {
+  color: $tertiary-color;
+  text-decoration: none;
+  margin-left: "1em";
+}
+
+a:hover {
+  color: $hover-color;
+  text-decoration: none;
+  margin-left: "1em";
+}
+
+a:active {
+  color: $active-color;
+  text-decoration: none;
+  margin-left: "1em";
+}
+
+.card-title {
+  color: $secondary-color;
+}

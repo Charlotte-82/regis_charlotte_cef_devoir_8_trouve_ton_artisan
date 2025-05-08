@@ -1,5 +1,5 @@
 import React from "react";
-import "../assets/css/Home.css";
+import "../assets/css/Home.scss";
 import Chevron from "../assets/images/chevron-droit.png";
 import TopArtisans from "../components/ArtisanTop";
 
@@ -7,13 +7,8 @@ function Home() {
   return (
     <div style={{ marginTop: "1em" }}>
       <div className="banner"></div>
-
-      <a
-        href="/"
-        style={{ color: "#0074c7", marginLeft: "1em", textDecoration: "none" }}
-      >
-        Accueil
-      </a>
+      {/* chemin emprunté par l'utilisateur depuis la page d'accueil */}
+      <a href="/">Accueil</a>
       <span>
         <img
           src={Chevron}
