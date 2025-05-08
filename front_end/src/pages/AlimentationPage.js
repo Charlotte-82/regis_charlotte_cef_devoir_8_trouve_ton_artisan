@@ -1,6 +1,6 @@
 import React from "react";
 import Chevron from "../assets/images/chevron-droit.png";
-import ArtisansAlim from "../components/ArtisanAlimentation";
+import ArtisansParSpe from "../components/artisanParSpe";
 
 function AlimPage() {
   return (
@@ -37,7 +37,7 @@ function AlimPage() {
         <h1>Alimentation</h1>
       </div>
       {/* fin entête */}
-      <ArtisansAlim />
+      <ArtisansParSpe categorie="alimentation" />
     </div>
   );
 }

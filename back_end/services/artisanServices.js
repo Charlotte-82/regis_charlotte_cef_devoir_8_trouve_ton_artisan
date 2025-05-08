@@ -3,8 +3,10 @@ const Specialite = require("../models/specialiteModel");
 const Ville = require("../models/villeModel");
 const Categorie = require("../models/categorieModel");
 const { QueryTypes } = require("sequelize");
+const { Sequelize } = require("sequelize");
 const sequelize = require("../config/database");
 
+Specialite.belongsTo(Categorie, { foreignKey: "Id_categorie" });
 Artisan.belongsTo(Specialite, { foreignKey: "Id_specialite" });
 Artisan.belongsTo(Ville, { foreignKey: "Id_ville" });
 
@@ -111,4 +113,62 @@ exports.fetchTopArtisans = async () => {
     console.error("Erreur SQL brute :", error);
     return [];
   }
+};
+
+// exports.getArtisansParCategorie = async (categorieLibelle) => {
+//   return await Artisan.findAll({
+//     include: [
+//       {
+//         model: Specialite,
+//         attributes: ["specialite_libelle"],
+//         include: [
+//           {
+//             model: Categorie,
+//             attributes: ["categorie_libelle"],
+//             where: Sequelize.where(
+//               Sequelize.fn("LOWER", Sequelize.col("categorie_libelle")),
+//               categorieLibelle.toLowerCase()
+//             ),
+//           },
+//         ],
+//       },
+//       {
+//         model: Ville,
+//         attributes: ["ville_nom"],
+//       },
+//     ],
+//     order: [[Sequelize.literal("`Specialite`.`specialite_libelle`"), "ASC"]],
+//   });
+// };
+
+exports.getArtisansParCategorie = async (categorieLibelle) => {
+  return await Artisan.findAll({
+    include: [
+      {
+        model: Specialite,
+        attributes: ["specialite_libelle", "Id_categorie"],
+        include: [
+          {
+            model: Categorie,
+            attributes: ["categorie_libelle"],
+          },
+        ],
+      },
+      {
+        model: Ville,
+        attributes: ["ville_nom"],
+      },
+    ],
+    where: Sequelize.literal(`
+      EXISTS (
+        SELECT 1
+        FROM Specialite AS s
+        INNER JOIN Categorie AS c ON s.Id_categorie = c.Id_categorie
+        WHERE s.Id_specialite = Artisan.Id_specialite
+          AND LOWER(c.categorie_libelle) = '${categorieLibelle.toLowerCase()}'
+      )
+    `),
+    order: [[Sequelize.literal("`Specialite`.`specialite_libelle`"), "ASC"]],
+    attributes: { exclude: ["Id_specialite", "Id_categorie"] },
+  });
 };

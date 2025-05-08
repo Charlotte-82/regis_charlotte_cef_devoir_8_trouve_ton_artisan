@@ -1,5 +1,4 @@
 import React from "react";
-import "../assets/css/Header.scss";
 import Architecte from "../assets/images/architecte.png";
 import Logo from "../assets/images/Logo.png";
 import Arrow from "../assets/images/down-arrow.png";
@@ -17,40 +16,33 @@ function Header() {
         </a>
       </div>
       <div className="d-flex flex-column justify-content-between align-items-end">
-        <div style={{ maxWidth: "300px" }}>
-          <input
-            type="text"
-            style={{
-              border: "none",
-              borderBottom: "1px solid #0074c7",
-              outline: "none",
-              padding: "5px 8px",
-              width: "250px",
-              marginBottom: "5px",
-            }}
-          />
-
+        {/* barre de recherche */}
+        <div
+          style={{
+            maxWidth: "300px",
+            border: "none",
+            borderBottom: "1px solid #0074c7",
+            borderRight: "solid 1px #0074c7",
+            outline: "none",
+            padding: "5px 8px",
+            width: "250px",
+            marginBottom: "5px",
+          }}
+        >
+          <input type="text" style={{ border: "none" }} />
           <span>
             <i
               className="fas fa-search"
               style={{
                 color: "#0074c7",
-                borderBottom: "solid 1px #0074c7",
-                borderRight: "solid 1px #0074c7",
-                paddingRight: "9px",
-                paddingBottom: "9px",
+                paddingBottom: "0.5em",
               }}
             ></i>
           </span>
         </div>
+        {/* barre de navigation */}
         <div className="menu">
-          <a
-            href="/alimpage"
-            className="me-3 text-decoration-none"
-            style={{ color: "#384050" }}
-          >
-            Alimentation
-          </a>
+          <a href="/alimpage">Alimentation</a>
           <span>
             <img
               src={Arrow}
@@ -58,13 +50,7 @@ function Header() {
               className="iconeMenu"
             />
           </span>
-          <a
-            href="/construction"
-            className="me-3 text-decoration-none"
-            style={{ color: "#384050" }}
-          >
-            Bâtiment
-          </a>
+          <a href="/construction">Bâtiment</a>
           <span>
             <img
               src={Arrow}
@@ -72,13 +58,7 @@ function Header() {
               className="iconeMenu"
             />
           </span>
-          <a
-            href="/construction"
-            className="me-3 text-decoration-none"
-            style={{ color: "#384050" }}
-          >
-            Fabrication
-          </a>
+          <a href="/construction">Fabrication</a>
           <span>
             <img
               src={Arrow}
@@ -86,13 +66,7 @@ function Header() {
               className="iconeMenu"
             />
           </span>
-          <a
-            href="/construction"
-            className="me-3 text-decoration-none"
-            style={{ color: "#384050" }}
-          >
-            Services
-          </a>
+          <a href="/construction">Services</a>
           <span>
             <img
               src={Arrow}

@@ -1,5 +1,4 @@
 import React from "react";
-import "../assets/css/Home.scss";
 import Chevron from "../assets/images/chevron-droit.png";
 import TopArtisans from "../components/ArtisanTop";
 
@@ -78,12 +77,7 @@ function Home() {
             4. Une réponse vous sera apportée sous 48h.
           </p>
           <button className="boutonDecouvrir">
-            <a
-              href="/categoriepage"
-              style={{ textDecoration: "none", color: "#00497c" }}
-            >
-              Rechercher un artisan
-            </a>
+            <a href="/categoriepage">Rechercher un artisan</a>
             <i className="bi bi-arrow-right" style={{ marginLeft: "2em" }}></i>
           </button>
         </div>

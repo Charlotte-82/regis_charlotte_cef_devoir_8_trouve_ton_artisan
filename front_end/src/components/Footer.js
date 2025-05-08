@@ -1,5 +1,4 @@
 import React from "react";
-import "../assets/css/Footer.scss";
 import Logo from "../assets/images/Logo.png";
 
 function Footer() {
@@ -21,19 +20,19 @@ function Footer() {
         className="d-flex justify-content-center"
         style={{ paddingBottom: "2em" }}
       >
-        <a href="#" style={{ color: "white", marginRight: "1em" }}>
+        <a href="/construction" className="footerLink">
           Mentions légales
         </a>
-        <a href="#" style={{ color: "white", marginRight: "1em" }}>
+        <a href="/construction" className="footerLink">
           Données personnelles
         </a>
-        <a href="#" style={{ color: "white", marginRight: "1em" }}>
+        <a href="/construction" className="footerLink">
           Accessibilité
         </a>
-        <a href="#" style={{ color: "white", marginRight: "1em" }}>
+        <a href="/construction" className="footerLink">
           Politique des cookies
         </a>
-        <a href="#" style={{ color: "white", marginRight: "1em" }}>
+        <a href="/construction" className="footerLink">
           Gestion des cookies
         </a>
       </div>
