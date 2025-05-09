@@ -10,48 +10,6 @@ Specialite.belongsTo(Categorie, { foreignKey: "Id_categorie" });
 Artisan.belongsTo(Specialite, { foreignKey: "Id_specialite" });
 Artisan.belongsTo(Ville, { foreignKey: "Id_ville" });
 
-exports.creerArtisanAvecRelations = async (data) => {
-  //   return await Artisan.create(data);
-  // };
-  const {
-    artisan_nom,
-    artisan_email,
-    artisan_site,
-    artisan_apropos,
-    artisan_note,
-    artisan_top,
-    specialite_libelle,
-    ville_nom,
-  } = data;
-
-  const specialiteTrouvee = await Specialite.findOne({
-    where: { specialite_libelle: specialite_libelle },
-  });
-
-  if (!specialiteTrouvee) {
-    throw new Error(
-      "Cette spécialité n'existe pas. Il faut d'abord créer la nouvelle spécialité puis créer le nouvel utilisateur."
-    );
-  }
-
-  const [villeTrouvee] = await Ville.findOrCreate({
-    where: { ville_nom: ville_nom },
-  });
-
-  const nouvelArtisan = await Artisan.create({
-    artisan_nom,
-    artisan_email,
-    artisan_site,
-    artisan_apropos,
-    artisan_note,
-    artisan_top,
-    Id_specialite: specialiteTrouvee.Id_specialite,
-    Id_ville: villeTrouvee.Id_ville,
-  });
-
-  return nouvelArtisan;
-};
-
 exports.getTousArtisans = async () => {
   return await Artisan.findAll({
     include: [
@@ -72,19 +30,6 @@ exports.getTousArtisans = async () => {
 
 exports.getArtisanById = async (id) => {
   return await Artisan.findByPk(id);
-};
-
-exports.updateArtisan = async (id, data) => {
-  const artisan = await Artisan.findByPk(id);
-  if (!artisan) return null;
-  return await artisan.update(data);
-};
-
-exports.deleteArtisan = async (id) => {
-  const artisan = await Artisan.findByPk(id);
-  if (!artisan) return null;
-  await artisan.destroy();
-  return artisan;
 };
 
 exports.fetchTopArtisans = async () => {
@@ -115,60 +60,29 @@ exports.fetchTopArtisans = async () => {
   }
 };
 
-// exports.getArtisansParCategorie = async (categorieLibelle) => {
-//   return await Artisan.findAll({
-//     include: [
-//       {
-//         model: Specialite,
-//         attributes: ["specialite_libelle"],
-//         include: [
-//           {
-//             model: Categorie,
-//             attributes: ["categorie_libelle"],
-//             where: Sequelize.where(
-//               Sequelize.fn("LOWER", Sequelize.col("categorie_libelle")),
-//               categorieLibelle.toLowerCase()
-//             ),
-//           },
-//         ],
-//       },
-//       {
-//         model: Ville,
-//         attributes: ["ville_nom"],
-//       },
-//     ],
-//     order: [[Sequelize.literal("`Specialite`.`specialite_libelle`"), "ASC"]],
-//   });
-// };
-
 exports.getArtisansParCategorie = async (categorieLibelle) => {
-  return await Artisan.findAll({
-    include: [
-      {
-        model: Specialite,
-        attributes: ["specialite_libelle", "Id_categorie"],
-        include: [
-          {
-            model: Categorie,
-            attributes: ["categorie_libelle"],
-          },
-        ],
-      },
-      {
-        model: Ville,
-        attributes: ["ville_nom"],
-      },
-    ],
-    where: Sequelize.literal(`
-      EXISTS (
-        SELECT 1
-        FROM Specialite AS s
-        INNER JOIN Categorie AS c ON s.Id_categorie = c.Id_categorie
-        WHERE s.Id_specialite = Artisan.Id_specialite
-          AND LOWER(c.categorie_libelle) = '${categorieLibelle.toLowerCase()}'
-      )
-    `),
-    order: [[Sequelize.literal("`Specialite`.`specialite_libelle`"), "ASC"]],
-    attributes: { exclude: ["Id_specialite", "Id_categorie"] },
+  const sql = `
+    SELECT 
+      a.artisan_nom,
+      a.artisan_apropos,
+      a.artisan_note,
+      a.artisan_image,
+      a.artisan_site,
+      s.specialite_libelle,
+      c.categorie_libelle,
+      v.ville_nom
+    FROM artisan a
+    JOIN specialite s ON a.Id_specialite = s.Id_specialite
+    JOIN categorie c ON s.Id_categorie = c.Id_categorie
+    JOIN ville v ON a.Id_ville = v.Id_ville
+    WHERE LOWER(c.categorie_libelle) = :categorie
+    ORDER BY s.specialite_libelle;
+  `;
+
+  const results = await sequelize.query(sql, {
+    replacements: { categorie: categorieLibelle.toLowerCase() },
+    type: Sequelize.QueryTypes.SELECT,
   });
+
+  return results;
 };

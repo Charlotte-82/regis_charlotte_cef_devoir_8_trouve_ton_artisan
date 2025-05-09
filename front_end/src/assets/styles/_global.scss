@@ -19,6 +19,20 @@ h2 {
   font-family: $font-main;
 }
 
+h3 {
+  color: $primary-color;
+}
+
+h4 {
+  color: $tertiary-color;
+}
+
+h4:hover {
+  color: $hover-color;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
 p {
   color: $tertiary-color;
   font-family: $font-main;

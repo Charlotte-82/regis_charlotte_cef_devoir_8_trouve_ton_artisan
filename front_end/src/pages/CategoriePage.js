@@ -63,7 +63,7 @@ function CategoriePage() {
             <hr className="hrTitre2" />
             <h2 className="card-title">Fabrication</h2>
             <button className="boutonDecouvrir">
-              <a href="/construction">Découvrir</a>
+              <a href="/fabpage">Découvrir</a>
               <i
                 className="bi bi-arrow-right"
                 style={{ marginLeft: "2em" }}
@@ -88,7 +88,7 @@ function CategoriePage() {
             <hr className="hrTitre2" />
             <h2 className="card-title">Bâtiment</h2>
             <button className="boutonDecouvrir">
-              <a href="/construction">Découvrir</a>
+              <a href="/batpage">Découvrir</a>
               <i
                 className="bi bi-arrow-right"
                 style={{ marginLeft: "2em" }}
@@ -108,7 +108,7 @@ function CategoriePage() {
             <hr className="hrTitre2" />
             <h2 className="card-title">Services</h2>
             <button className="boutonDecouvrir">
-              <a href="/construction">Découvrir</a>
+              <a href="/servpage">Découvrir</a>
               <i
                 className="bi bi-arrow-right"
                 style={{ marginLeft: "2em" }}

@@ -50,7 +50,7 @@ function Header() {
               className="iconeMenu"
             />
           </span>
-          <a href="/construction">Bâtiment</a>
+          <a href="/batpage">Bâtiment</a>
           <span>
             <img
               src={Arrow}
@@ -58,7 +58,7 @@ function Header() {
               className="iconeMenu"
             />
           </span>
-          <a href="/construction">Fabrication</a>
+          <a href="/fabpage">Fabrication</a>
           <span>
             <img
               src={Arrow}
@@ -66,7 +66,7 @@ function Header() {
               className="iconeMenu"
             />
           </span>
-          <a href="/construction">Services</a>
+          <a href="/servpage">Services</a>
           <span>
             <img
               src={Arrow}

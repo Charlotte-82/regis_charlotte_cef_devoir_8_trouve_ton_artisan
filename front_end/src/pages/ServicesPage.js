@@ -2,7 +2,7 @@ import React from "react";
 import Chevron from "../assets/images/chevron-droit.png";
 import ArtisansParSpe from "../components/artisanParSpe";
 
-function AlimPage() {
+function ServPage() {
   return (
     <div>
       {/* début entête */}
@@ -24,7 +24,7 @@ function AlimPage() {
             className="chevronMenu"
           ></img>
         </span>
-        <a href="/alimpage">Alimentation</a>
+        <a href="/servpage">Services</a>
         <span>
           <img
             src={Chevron}
@@ -34,12 +34,12 @@ function AlimPage() {
         </span>
 
         {/* titre page */}
-        <h1>Alimentation</h1>
+        <h1>Services</h1>
       </div>
       {/* fin entête */}
-      <ArtisansParSpe categorie="alimentation" />
+      <ArtisansParSpe categorie="services" />
     </div>
   );
 }
 
-export default AlimPage;
+export default ServPage;
