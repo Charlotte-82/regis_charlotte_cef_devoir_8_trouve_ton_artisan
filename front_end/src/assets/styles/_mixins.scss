@@ -1,18 +1,15 @@
-// Mixin pour les écrans larges (desktop)
 @mixin desktop {
   @media (min-width: 1025px) {
     @content;
   }
 }
 
-// Mixin pour les tablettes
 @mixin tablette {
   @media (min-width: 768px) and (max-width: 1024px) {
     @content;
   }
 }
 
-// Mixin pour les mobiles
 @mixin mobile {
   @media (max-width: 767px) {
     @content;
