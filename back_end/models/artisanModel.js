@@ -38,8 +38,6 @@ const Artisan = sequelize.define(
       },
     },
   },
-  // specialite_libelle: { type: DataTypes.STRING, field: "id_specialite" },
-  // ville_nom: { type: DataTypes.STRING, field: "id_ville" },
   {
     timestamps: true,
     tableName: "artisan",
