@@ -8,6 +8,7 @@ import FabPage from "../src/pages/Fabricationpage";
 import ServPage from "../src/pages/ServicesPage";
 import Footer from "../src/components/Footer";
 import Construction from "../src/pages/Construction";
+import FicheArtisan from "../src/pages/FicheArtisan";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Route path="/batpage" element={<BatPage />}></Route>
         <Route path="/fabpage" element={<FabPage />}></Route>
         <Route path="/servpage" element={<ServPage />}></Route>
+        <Route path="/ficheartisan/:id" element={<FicheArtisan />}></Route>
         <Route path="/construction" element={<Construction />}></Route>
       </Routes>
       <Footer />

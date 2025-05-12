@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { getArtisansParCategorie } from "../services/artisansServices";
+import { Link } from "react-router-dom";
 
 function ArtisansParSpe({ categorie }) {
   const [groupes, setGroupes] = useState({});
@@ -37,7 +38,7 @@ function ArtisansParSpe({ categorie }) {
   }, [categorie]);
 
   return (
-    <div className="container mt-4" style={{ marginLeft: "2em" }}>
+    <div className="container mt-4" style={{ marginLeft: "3em" }}>
       <h2>Artisans de la catégorie « {categorie} »</h2>
 
       {Object.keys(groupes).length === 0 ? (
@@ -47,30 +48,48 @@ function ArtisansParSpe({ categorie }) {
           <div key={specialite} className="mb-4">
             <h3>{specialite}</h3>
 
-            {artisans.map((artisan) => (
-              <div
-                key={artisan.Id_artisan || artisan.id || Math.random()}
-                className="card mb-3 p-3 shadow-sm"
-                style={{
-                  backgroundColor: "#f1f8fc",
-                  border: "solid #0074c7 2px",
-                }}
-              >
-                <div class="row">
-                  <img
-                    src={artisan.artisan_image}
-                    style={{ height: "6em", width: "8em" }}
-                  />
-                  <div class="col">
-                    <h4>
-                      {artisan.artisan_nom || "Nom inconnu"}
-                      <small> / {artisan.ville_nom || "Non renseignée"}</small>
-                    </h4>
-                    <p>{artisan.artisan_apropos || "Pas de description."}</p>
+            <div className="row flex-wrap justify-content-between">
+              {artisans.map((artisan) => {
+                console.log("artisan :", artisan);
+
+                return (
+                  <div
+                    key={artisan.Id_artisan || artisan.id || Math.random()}
+                    className="col-12 col-md-6 col-lg-4 mb-4"
+                  >
+                    <div
+                      className="card h-100 p-3 shadow-sm"
+                      style={{
+                        backgroundColor: "#f1f8fc",
+                        border: "solid #0074c7 2px",
+                      }}
+                    >
+                      <div className="card-body">
+                        <h4 className="card-title">
+                          <Link
+                            to={`/ficheartisan/${artisan.Id_artisan}`}
+                            className="text-decoration-none text-dark"
+                          >
+                            {artisan.artisan_nom || "Nom inconnu"}
+                          </Link>{" "}
+                          <small>
+                            {" "}
+                            / {artisan.ville_nom || "Non renseignée"}
+                          </small>
+                        </h4>
+                        <div className="d-flex align-items-center mb-2">
+                          <i className="bi bi-star-fill text-warning me-1"></i>
+                          {artisan.artisan_note}/5
+                        </div>
+                        <p className="card-text">
+                          {artisan.artisan_apropos || "Pas de description."}
+                        </p>
+                      </div>
+                    </div>
                   </div>
-                </div>
-              </div>
-            ))}
+                );
+              })}
+            </div>
           </div>
         ))
       )}

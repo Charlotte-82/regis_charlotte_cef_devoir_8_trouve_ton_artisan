@@ -29,8 +29,36 @@ exports.getTousArtisans = async () => {
 };
 
 exports.getArtisanById = async (id) => {
-  return await Artisan.findByPk(id);
+  return await Artisan.findByPk(id, {
+    include: [
+      { model: Ville, attributes: ["ville_nom"] },
+      {
+        model: Specialite,
+        attributes: ["specialite_libelle"],
+      },
+    ],
+  });
 };
+
+// exports.getArtisanById = async (id) => {
+//   const sql = `
+//     SELECT
+//       a.*,
+//       v.ville_nom AS ville_nom,
+//       s.specialite_libelle AS specialite_libelle
+//     FROM artisan a
+//     JOIN ville v ON a.Id_ville = v.Id_ville
+//     JOIN specialite s ON a.Id_specialite = s.Id_specialite
+//     WHERE a.Id_artisan = :id;
+//   `;
+//   console.log("Requête SQL exécutée :", sql, { replacements: { id: id } });
+
+//   const [results] = await sequelize.query(sql, {
+//     replacements: { id: id },
+//     type: Sequelize.QueryTypes.SELECT,
+//   });
+//   return results.length > 0 ? results[0] : null;
+// };
 
 exports.fetchTopArtisans = async () => {
   const sql = `
@@ -62,7 +90,8 @@ exports.fetchTopArtisans = async () => {
 
 exports.getArtisansParCategorie = async (categorieLibelle) => {
   const sql = `
-    SELECT 
+    SELECT
+      a.Id_artisan,
       a.artisan_nom,
       a.artisan_apropos,
       a.artisan_note,

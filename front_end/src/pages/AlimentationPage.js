@@ -1,4 +1,3 @@
-import React from "react";
 import Chevron from "../assets/images/chevron-droit.png";
 import ArtisansParSpe from "../components/artisanParSpe";
 

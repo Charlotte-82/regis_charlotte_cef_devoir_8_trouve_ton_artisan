@@ -21,10 +21,15 @@ exports.getArtisans = async (req, res) => {
 
 exports.getArtisanById = async (req, res) => {
   try {
-    const artisan = await artisanService.getArtisanById();
-    res.status(200).json(artisan);
+    const { id } = req.params;
+    const artisan = await artisanService.getArtisanById(id);
+    if (artisan) {
+      res.status(200).json(artisan);
+    } else {
+      res.status(404).json({ message: "Artisan non trouvé" });
+    }
   } catch (err) {
-    console.error("Aucun artisan n'a été trouvé :", err);
+    console.error("Erreur lors de la récupération de l'artisan :", err);
     res.status(500).json({ message: "Erreur serveur", erreur: err.message });
   }
 };
