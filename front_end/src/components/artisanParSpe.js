@@ -68,15 +68,13 @@ function ArtisansParSpe({ categorie }) {
                         <h4 className="card-title">
                           <Link
                             to={`/ficheartisan/${artisan.Id_artisan}`}
-                            className="text-decoration-none text-dark"
+                            className="card-title"
                           >
-                            {artisan.artisan_nom || "Nom inconnu"}
+                            {artisan.artisan_nom || "Nom inconnu"} /{" "}
+                            {artisan.ville_nom || "Non renseignée"}
                           </Link>{" "}
-                          <small>
-                            {" "}
-                            / {artisan.ville_nom || "Non renseignée"}
-                          </small>
                         </h4>
+
                         <div className="d-flex align-items-center mb-2">
                           <i className="bi bi-star-fill text-warning me-1"></i>
                           {artisan.artisan_note}/5

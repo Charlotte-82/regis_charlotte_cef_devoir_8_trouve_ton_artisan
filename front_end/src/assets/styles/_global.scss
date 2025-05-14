@@ -27,12 +27,6 @@ h4 {
   color: $tertiary-color;
 }
 
-h4:hover {
-  color: $hover-color;
-  text-decoration: underline;
-  cursor: pointer;
-}
-
 p {
   color: $tertiary-color;
   font-family: $font-main;
@@ -150,6 +144,11 @@ a:active {
   margin-right: 1em;
 }
 
+input {
+  outline-color: $primary-color;
+  margin-right: 1em;
+}
+
 // home
 
 .boutonBasPage {
@@ -167,11 +166,10 @@ a:active {
   background-color: $secondary-color;
 }
 
-.banner {
-  background-image: url(../images/annecy.jpg);
-  background-position: 50% 20%;
-  opacity: 0.7;
-  height: 18em;
-  width: 100%;
-  margin-bottom: 1em;
+.card-title {
+  cursor: pointer;
+}
+
+.card-title:hover {
+  color: $hover-color;
 }

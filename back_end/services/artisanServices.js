@@ -66,6 +66,7 @@ exports.fetchTopArtisans = async () => {
       a.artisan_image AS image,
       a.artisan_nom AS nom,
       a.artisan_note AS note,
+      a.artisan_apropos AS apropos,
       s.specialite_libelle AS specialite,
       v.ville_nom AS ville
     FROM artisan a

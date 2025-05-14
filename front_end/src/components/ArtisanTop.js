@@ -26,16 +26,24 @@ function TopArtisans() {
                     style={{ height: "200px", objectFit: "cover" }}
                   />
                 )}
-                <div
-                  className="card-body"
-                  style={{ borderLeft: "solid 1px #00497c", marginLeft: "1em" }}
-                >
-                  <h3 className="card-title" style={{ textAlign: "right" }}>
+                <div className="card-body">
+                  <h3
+                    className="card-title"
+                    style={{
+                      textAlign: "right",
+                      borderLeft: "solid 1px #0074c7",
+                      marginLeft: "1em",
+                    }}
+                  >
                     {a.nom}
                   </h3>
                   <h4
                     className="card-subtitle mb-2 text-muted"
-                    style={{ textAlign: "right", fontSize: "medium" }}
+                    style={{
+                      textAlign: "right",
+                      fontSize: "medium",
+                      marginLeft: "2em",
+                    }}
                   >
                     {a.specialite} — {a.ville}
                   </h4>
@@ -43,6 +51,7 @@ function TopArtisans() {
                   <p>
                     <strong>Note :</strong> {a.note}/5
                   </p>
+                  <p>{a.apropos}</p>
                 </div>
                 <button className="boutonDecouvrir">
                   <a href="#">Découvrir</a>
