@@ -17,7 +17,7 @@ function TopArtisans() {
         {Array.isArray(artisans) &&
           artisans.map((a, index) => (
             <div className="col-md-4 d-flex justify-content-around" key={index}>
-              <div className="card shadow-sm mb-4" style={{ border: "none" }}>
+              <div className="card mb-4" style={{ border: "none" }}>
                 {a.image && (
                   <img
                     src={a.image}
@@ -26,9 +26,17 @@ function TopArtisans() {
                     style={{ height: "200px", objectFit: "cover" }}
                   />
                 )}
-                <div className="card-body">
-                  <h3 className="card-title">{a.nom}</h3>
-                  <h4 className="card-subtitle mb-2 text-muted">
+                <div
+                  className="card-body"
+                  style={{ borderLeft: "solid 1px #00497c", marginLeft: "1em" }}
+                >
+                  <h3 className="card-title" style={{ textAlign: "right" }}>
+                    {a.nom}
+                  </h3>
+                  <h4
+                    className="card-subtitle mb-2 text-muted"
+                    style={{ textAlign: "right", fontSize: "medium" }}
+                  >
                     {a.specialite} — {a.ville}
                   </h4>
 
@@ -36,6 +44,13 @@ function TopArtisans() {
                     <strong>Note :</strong> {a.note}/5
                   </p>
                 </div>
+                <button className="boutonDecouvrir">
+                  <a href="#">Découvrir</a>
+                  <i
+                    className="bi bi-arrow-right"
+                    style={{ marginLeft: "2em" }}
+                  ></i>
+                </button>
               </div>
             </div>
           ))}

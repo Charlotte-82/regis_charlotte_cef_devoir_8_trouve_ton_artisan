@@ -49,8 +49,8 @@ body {
 
 .boutonDecouvrir {
   border: none;
-  background-color: $light-color;
-  color: $tertiary-color;
+  background-color: white;
+  color: $secondary-color;
   font-weight: 500;
   letter-spacing: 0.2em;
   margin-left: 5em;
@@ -59,19 +59,18 @@ body {
 }
 
 .boutonDecouvrir:hover {
-  border-bottom: $hover-color solid 1px;
-  color: $hover-color;
+  border-bottom: $secondary-color solid 1px;
 }
 
 a {
-  color: $tertiary-color;
+  color: $secondary-color;
   text-decoration: none;
   margin-left: 1em;
   margin-right: 1em;
 }
 
 a:hover {
-  color: $hover-color;
+  color: $secondary-color;
   text-decoration: none;
   margin-left: "1em";
 }
@@ -120,9 +119,18 @@ a:active {
 .footerLink {
   margin-right: "1em";
   color: $light-color;
+  text-decoration: underline;
 }
 
 // header
+
+.menuItem {
+  color: $tertiary-color;
+}
+
+.menuItem:hover {
+  color: $tertiary-color;
+}
 
 .architecte {
   height: 10em;

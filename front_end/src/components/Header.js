@@ -1,4 +1,3 @@
-import React from "react";
 import Architecte from "../assets/images/architecte.png";
 import Logo from "../assets/images/Logo.png";
 import Arrow from "../assets/images/down-arrow.png";
@@ -42,7 +41,9 @@ function Header() {
         </div>
         {/* barre de navigation */}
         <div className="menu">
-          <a href="/alimpage">Alimentation</a>
+          <a href="/alimpage" className="menuItem">
+            Alimentation
+          </a>
           <span>
             <img
               src={Arrow}
@@ -50,7 +51,9 @@ function Header() {
               className="iconeMenu"
             />
           </span>
-          <a href="/batpage">Bâtiment</a>
+          <a href="/batpage" className="menuItem">
+            Bâtiment
+          </a>
           <span>
             <img
               src={Arrow}
@@ -58,7 +61,9 @@ function Header() {
               className="iconeMenu"
             />
           </span>
-          <a href="/fabpage">Fabrication</a>
+          <a href="/fabpage" className="menuItem">
+            Fabrication
+          </a>
           <span>
             <img
               src={Arrow}
@@ -66,7 +71,9 @@ function Header() {
               className="iconeMenu"
             />
           </span>
-          <a href="/servpage">Services</a>
+          <a href="/servpage" className="menuItem">
+            Services
+          </a>
           <span>
             <img
               src={Arrow}

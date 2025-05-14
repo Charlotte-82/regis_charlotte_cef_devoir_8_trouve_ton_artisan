@@ -1,11 +1,10 @@
-import React from "react";
 import Chevron from "../assets/images/chevron-droit.png";
 import TopArtisans from "../components/ArtisanTop";
+import Artisan from "../assets/images/artisan.jpg";
 
 function Home() {
   return (
     <div style={{ marginTop: "1em" }}>
-      <div className="banner"></div>
       {/* chemin emprunté par l'utilisateur depuis la page d'accueil */}
       <a href="/">Accueil</a>
       <span>
@@ -77,10 +76,15 @@ function Home() {
             4. Une réponse vous sera apportée sous 48h.
           </p>
           <button className="boutonDecouvrir">
-            <a href="/categoriepage">Rechercher un artisan</a>
+            <a href="/categoriepage">Découvrir</a>
             <i className="bi bi-arrow-right" style={{ marginLeft: "2em" }}></i>
           </button>
         </div>
+        <img
+          src={Artisan}
+          alt="des mains d'artisan maniant un rabot"
+          style={{ width: "30%", marginRight: "2em" }}
+        ></img>
       </div>
 
       <hr className="hrTitre2" style={{ marginLeft: "6em" }} />
