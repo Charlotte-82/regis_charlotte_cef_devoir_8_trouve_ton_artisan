@@ -44,3 +44,17 @@ exports.getTopArtisans = async (req, res) => {
     res.status(500).json({ error: "Erreur serveur" });
   }
 };
+
+exports.getArtisansFiltres = async (req, res) => {
+  try {
+    const { specialite, ville } = req.query;
+    const artisans = await artisanService.getArtisansByFiltres(
+      specialite,
+      ville
+    );
+    res.status(200).json(artisans);
+  } catch (err) {
+    console.error("Erreur lors de la récupération des artisans filtrés :", err);
+    res.status(500).json({ message: "Erreur serveur", erreur: err.message });
+  }
+};

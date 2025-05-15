@@ -40,26 +40,6 @@ exports.getArtisanById = async (id) => {
   });
 };
 
-// exports.getArtisanById = async (id) => {
-//   const sql = `
-//     SELECT
-//       a.*,
-//       v.ville_nom AS ville_nom,
-//       s.specialite_libelle AS specialite_libelle
-//     FROM artisan a
-//     JOIN ville v ON a.Id_ville = v.Id_ville
-//     JOIN specialite s ON a.Id_specialite = s.Id_specialite
-//     WHERE a.Id_artisan = :id;
-//   `;
-//   console.log("Requête SQL exécutée :", sql, { replacements: { id: id } });
-
-//   const [results] = await sequelize.query(sql, {
-//     replacements: { id: id },
-//     type: Sequelize.QueryTypes.SELECT,
-//   });
-//   return results.length > 0 ? results[0] : null;
-// };
-
 exports.fetchTopArtisans = async () => {
   const sql = `
     SELECT 
@@ -115,4 +95,21 @@ exports.getArtisansParCategorie = async (categorieLibelle) => {
   });
 
   return results;
+};
+
+exports.getArtisansByFiltres = async (specialite, ville) => {
+  return await Artisan.findAll({
+    include: [
+      {
+        model: Specialite,
+        where: { specialite_libelle: specialite },
+        attributes: ["specialite_libelle"],
+      },
+      {
+        model: Ville,
+        where: { ville_nom: ville },
+        attributes: ["ville_nom"],
+      },
+    ],
+  });
 };

@@ -173,3 +173,35 @@ input {
 .card-title:hover {
   color: $hover-color;
 }
+
+// recherche
+
+.boutonRecherche {
+  border: none;
+  background-color: $primary-color;
+  color: $light-color;
+  border-radius: 5px;
+  padding: 0.5em 1.5em;
+  font-weight: 700;
+  letter-spacing: 2px;
+  font-size: medium;
+  margin-bottom: 2em;
+  width: 10em;
+}
+
+.boutonRecherche:hover {
+  background-color: $secondary-color;
+  cursor: pointer;
+}
+
+.form-select {
+  background-color: $light-color;
+  border: solid 2px $tertiary-color;
+  margin-bottom: 1em;
+  width: 60%;
+}
+
+.resultatRecherche {
+  border-left: solid 1px $primary-color;
+  padding-left: 2em;
+}

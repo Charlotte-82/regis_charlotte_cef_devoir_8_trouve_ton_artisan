@@ -75,10 +75,15 @@ function Home() {
             {" "}
             4. Une réponse vous sera apportée sous 48h.
           </p>
-          <button className="boutonDecouvrir">
-            <a href="/categoriepage">Découvrir</a>
-            <i className="bi bi-arrow-right" style={{ marginLeft: "2em" }}></i>
-          </button>
+          <a href="/categoriepage">
+            <button className="boutonDecouvrir">
+              Découvrir
+              <i
+                className="bi bi-arrow-right"
+                style={{ marginLeft: "2em" }}
+              ></i>
+            </button>
+          </a>
         </div>
         <img
           src={Artisan}

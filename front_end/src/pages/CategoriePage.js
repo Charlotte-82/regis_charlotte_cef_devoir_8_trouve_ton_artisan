@@ -41,14 +41,16 @@ function CategoriePage() {
         <div class="card" style={{ width: "35%", border: "none" }}>
           <div class="card-body">
             <hr className="hrTitre2" />
-            <h2 className="card-title">Alimentation</h2>
-            <button className="boutonDecouvrir">
-              <a href="/alimpage">Découvrir</a>
-              <i
-                className="bi bi-arrow-right"
-                style={{ marginLeft: "2em" }}
-              ></i>
-            </button>
+            <h2>Alimentation</h2>
+            <a href="/par-categorie/alimentation">
+              <button className="boutonDecouvrir">
+                Découvrir
+                <i
+                  className="bi bi-arrow-right"
+                  style={{ marginLeft: "2em" }}
+                ></i>
+              </button>
+            </a>
           </div>
           <img
             src={AlimCat}
@@ -61,14 +63,16 @@ function CategoriePage() {
         <div class="card" style={{ width: "35%", border: "none" }}>
           <div class="card-body">
             <hr className="hrTitre2" />
-            <h2 className="card-title">Fabrication</h2>
-            <button className="boutonDecouvrir">
-              <a href="/fabpage">Découvrir</a>
-              <i
-                className="bi bi-arrow-right"
-                style={{ marginLeft: "2em" }}
-              ></i>
-            </button>
+            <h2>Fabrication</h2>
+            <a href="/par-categorie/fabrication">
+              <button className="boutonDecouvrir">
+                Découvrir
+                <i
+                  className="bi bi-arrow-right"
+                  style={{ marginLeft: "2em" }}
+                ></i>
+              </button>
+            </a>
           </div>
           <img
             src={FabCat}
@@ -86,14 +90,16 @@ function CategoriePage() {
         <div class="card" style={{ width: "35%", border: "none" }}>
           <div class="card-body">
             <hr className="hrTitre2" />
-            <h2 className="card-title">Bâtiment</h2>
-            <button className="boutonDecouvrir">
-              <a href="/batpage">Découvrir</a>
-              <i
-                className="bi bi-arrow-right"
-                style={{ marginLeft: "2em" }}
-              ></i>
-            </button>
+            <h2>Bâtiment</h2>
+            <a href="/par-categorie/batiment">
+              <button className="boutonDecouvrir">
+                Découvrir
+                <i
+                  className="bi bi-arrow-right"
+                  style={{ marginLeft: "2em" }}
+                ></i>
+              </button>
+            </a>
           </div>
           <img
             src={BatCat}
@@ -106,14 +112,16 @@ function CategoriePage() {
         <div class="card" style={{ width: "35%", border: "none" }}>
           <div class="card-body">
             <hr className="hrTitre2" />
-            <h2 className="card-title">Services</h2>
-            <button className="boutonDecouvrir">
-              <a href="/servpage">Découvrir</a>
-              <i
-                className="bi bi-arrow-right"
-                style={{ marginLeft: "2em" }}
-              ></i>
-            </button>
+            <h2>Services</h2>
+            <a href="/par-categorie/services">
+              <button className="boutonDecouvrir">
+                Découvrir
+                <i
+                  className="bi bi-arrow-right"
+                  style={{ marginLeft: "2em" }}
+                ></i>
+              </button>
+            </a>
           </div>
           <img
             src={ServCat}

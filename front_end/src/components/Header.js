@@ -41,7 +41,7 @@ function Header() {
         </div>
         {/* barre de navigation */}
         <div className="menu">
-          <a href="/alimpage" className="menuItem">
+          <a href="/par-categorie/alimentation" className="menuItem">
             Alimentation
           </a>
           <span>
@@ -51,7 +51,7 @@ function Header() {
               className="iconeMenu"
             />
           </span>
-          <a href="/batpage" className="menuItem">
+          <a href="/par-categorie/batiment" className="menuItem">
             Bâtiment
           </a>
           <span>
@@ -61,7 +61,7 @@ function Header() {
               className="iconeMenu"
             />
           </span>
-          <a href="/fabpage" className="menuItem">
+          <a href="/par-categorie/fabrication" className="menuItem">
             Fabrication
           </a>
           <span>
@@ -71,7 +71,7 @@ function Header() {
               className="iconeMenu"
             />
           </span>
-          <a href="/servpage" className="menuItem">
+          <a href="/par-categorie/services" className="menuItem">
             Services
           </a>
           <span>

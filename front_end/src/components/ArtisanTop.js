@@ -53,13 +53,15 @@ function TopArtisans() {
                   </p>
                   <p>{a.apropos}</p>
                 </div>
-                <button className="boutonDecouvrir">
-                  <a href="#">Découvrir</a>
-                  <i
-                    className="bi bi-arrow-right"
-                    style={{ marginLeft: "2em" }}
-                  ></i>
-                </button>
+                <a href="/ficheartisan/:id">
+                  <button className="boutonDecouvrir">
+                    Découvrir
+                    <i
+                      className="bi bi-arrow-right"
+                      style={{ marginLeft: "2em" }}
+                    ></i>
+                  </button>
+                </a>
               </div>
             </div>
           ))}

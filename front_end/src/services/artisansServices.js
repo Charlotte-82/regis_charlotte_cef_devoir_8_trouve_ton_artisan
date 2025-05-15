@@ -31,3 +31,15 @@ export const getArtisansTop = async () => {
 
   return result;
 };
+
+export const getArtisansFiltres = async (specialite, ville) => {
+  const response = await fetch(
+    `http://localhost:5000/api/artisans/filtres?specialite=${encodeURIComponent(
+      specialite
+    )}&ville=${encodeURIComponent(ville)}`
+  );
+  if (!response.ok) {
+    throw new Error("Erreur lors de la récupération des artisans filtrés");
+  }
+  return await response.json();
+};

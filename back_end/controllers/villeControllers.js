@@ -19,3 +19,16 @@ exports.getVilleById = async (req, res) => {
     res.status(500).json({ message: "Erreur serveur", erreur: err.message });
   }
 };
+
+exports.getVillesBySpecialite = async (req, res) => {
+  try {
+    const specialite = req.params.specialite;
+    console.log("Specialité demandée :", req.params.specialite);
+
+    const villes = await villeService.getVillesBySpecialite(specialite);
+    res.status(200).json(villes);
+  } catch (err) {
+    console.error("Erreur récupération villes :", err);
+    res.status(500).json({ message: "Erreur serveur", erreur: err.message });
+  }
+};
