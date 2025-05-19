@@ -2,8 +2,8 @@ const { Sequelize } = require("sequelize");
 
 const sequelize = new Sequelize(
   "tta_bdd",
-  "administrateur",
-  "MotDePasseUltraSecure123!",
+  "admin",
+  "PalpatineMeilleurChien2019!",
   {
     host: "localhost",
     dialect: "mysql",

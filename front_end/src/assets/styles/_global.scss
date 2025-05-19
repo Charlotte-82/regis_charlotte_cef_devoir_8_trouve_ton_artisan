@@ -27,6 +27,9 @@ h2 {
   font-weight: 700;
   margin-bottom: 0.8em;
   font-family: $font-main;
+  @include mobile {
+    font-size: large;
+  }
 }
 
 h3 {
@@ -60,10 +63,19 @@ body {
   margin-left: 5em;
   padding-bottom: 0.8em;
   margin-top: 1em;
+
+  @include mobile {
+    letter-spacing: 0.1em;
+    margin-top: 0.3em;
+  }
 }
 
 .boutonDecouvrir:hover {
   border-bottom: $secondary-color solid 1px;
+}
+
+.flecheDecouvrir {
+  margin-left: 1em;
 }
 
 // a {
@@ -85,196 +97,9 @@ body {
 //   margin-left: "1em";
 // }
 
-.card-title {
-  color: $secondary-color;
-}
+// .card-title {
+//   color: $secondary-color;
+// }
 
-// footer
-
-.footer {
-  background-color: $primary-color;
-}
-
-.logoFooter {
-  height: 5em;
-  margin-left: -25em;
-}
-
-.titreFooter {
-  color: $light-color;
-  font-weight: 900;
-  letter-spacing: 0.3em;
-}
-
-.contentFooter {
-  color: $light-color;
-  margin-bottom: 0.3em;
-  letter-spacing: 0.5em;
-}
-
-.hrFooter {
-  color: $light-color;
-  border: 1px solid $light-color;
-  margin-left: 15em;
-  margin-right: 15em;
-  opacity: 1;
-}
-
-.footerLink {
-  margin-right: "1em";
-  color: $light-color;
-  text-decoration: underline;
-}
-
-// header
-
-.menuItem {
-  color: $tertiary-color;
-}
-
-.menuItem:hover {
-  color: $tertiary-color;
-}
-
-.architecte {
-  height: 10em;
-  margin: 1em;
-
-  @include mobile {
-    height: 5em;
-  }
-}
-
-.logo {
-  height: 10em;
-
-  @include mobile {
-    height: 2em;
-  }
-}
-
-.menu {
-  margin-top: 6em;
-
-  @include mobile {
-    margin-top: 0;
-    position: absolute;
-    top: 0em;
-  }
-}
-
-.iconeMenu {
-  width: 1em;
-  margin-right: 1em;
-}
-
-.lienChemin {
-  color: $primary-color;
-  text-decoration: none;
-  margin-left: 1em;
-
-  @include mobile {
-    font-size: smaller;
-  }
-}
-
-input {
-  outline-color: $primary-color;
-  margin-right: 1em;
-}
-
-.barreDeRecherche {
-  display: flex;
-  align-items: center;
-  max-width: 300px;
-  border-bottom: 1px solid $primary-color;
-  border-right: solid 1px $primary-color;
-  padding: 5px 8px;
-  width: 250px;
-  margin-bottom: 5px;
-
-  @include mobile {
-    border: none;
-    width: 50;
-    position: absolute;
-    left: 8em;
-    top: 0.7em;
-  }
-}
-
-// home
-
-.boutonBasPage {
-  border: none;
-  background-color: $primary-color;
-  color: $light-color;
-  border-radius: 5px;
-  padding: 0.7em 2em;
-  font-weight: 500;
-  letter-spacing: 2px;
-  font-size: larger;
-}
-
-.boutonBasPage:hover {
-  background-color: $secondary-color;
-}
-
-.card-title {
-  cursor: pointer;
-}
-
-.card-title:hover {
-  color: $hover-color;
-}
-
-.imageAccueil {
-  width: "30%";
-  margin-right: "2em";
-}
-
-// recherche
-
-.boutonRecherche {
-  border: none;
-  background-color: $primary-color;
-  color: $light-color;
-  border-radius: 5px;
-  padding: 0.5em 1.5em;
-  font-weight: 700;
-  letter-spacing: 2px;
-  font-size: medium;
-  margin-bottom: 2em;
-  width: 10em;
-}
-
-.boutonRecherche:hover {
-  background-color: $secondary-color;
-  cursor: pointer;
-}
-
-.form-select {
-  background-color: $light-color;
-  border: solid 2px $tertiary-color;
-  margin-bottom: 1em;
-  width: 60%;
-}
-
-.resultatRecherche {
-  border-left: solid 1px $primary-color;
-  padding-left: 2em;
-}
-
-// Fiche de l'artisan
-
-.imageFiche {
-  height: 20em;
-}
-
-// Formulaire
-
-.formulaireContact {
-  border: solid $primary-color 2px;
-  padding: 2em;
-  border-radius: 10px;
-  margin-bottom: 1em;
-}
+@import "./pages";
+@import "./components";

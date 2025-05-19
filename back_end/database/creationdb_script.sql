@@ -2,9 +2,9 @@ CREATE DATABASE IF NOT EXISTS tta_bdd;
 
 USE tta_bdd;
 
-CREATE USER IF NOT EXISTS 'administrateur'@'localhost' IDENTIFIED BY 'MotDePasseUltraSecure123!';
+CREATE USER IF NOT EXISTS 'admin'@'localhost' IDENTIFIED BY 'PalpatineMeilleurChien2019!';
 
-GRANT ALL PRIVILEGES ON tta_bdd.* TO 'administrateur'@'localhost';
+GRANT ALL PRIVILEGES ON tta_bdd.* TO 'admin'@'localhost';
 
 FLUSH PRIVILEGES;
 

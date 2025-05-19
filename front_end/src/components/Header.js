@@ -5,13 +5,11 @@ import BarreRecherche from "./BarreRechercheHeader";
 
 function Header() {
   return (
-    <div
-      className="d-flex justify-content-between align-items-start px-3 py-2"
-      style={{ boxShadow: "1px 2px 10px 2px lightgrey" }}
-    >
+    <div className="d-flex justify-content-between align-items-start px-3 py-2 headerBox">
       <div className="d-flex align-items-center">
         <a href="/">
           <img src={Architecte} className="architecte" alt="icône d'artisan" />
+          <br className="retourLogo" />
           <img src={Logo} className="logo" alt="Trouve ton artisan!" />
         </a>
       </div>

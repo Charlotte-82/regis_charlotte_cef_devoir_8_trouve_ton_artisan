@@ -1,0 +1,179 @@
+// footer
+
+.footer {
+  background-color: $primary-color;
+}
+
+.logoFooter {
+  height: 5em;
+  margin-left: -25em;
+}
+
+.titreFooter {
+  color: $light-color;
+  font-weight: 900;
+  letter-spacing: 0.3em;
+}
+
+.contentFooter {
+  color: $light-color;
+  margin-bottom: 0.3em;
+  letter-spacing: 0.5em;
+}
+
+.hrFooter {
+  color: $light-color;
+  border: 1px solid $light-color;
+  margin-left: 15em;
+  margin-right: 15em;
+  opacity: 1;
+  @include mobile {
+    margin-left: 2em;
+    margin-right: 2em;
+  }
+}
+
+.footerLink {
+  margin-right: 1em;
+  color: $light-color;
+  text-decoration: underline;
+  @include mobile {
+    margin-right: 0.5em;
+    font-size: small;
+  }
+}
+
+// header
+
+.headerBox {
+  box-shadow: 1px 2px 10px 2px lightgrey;
+  margin-bottom: 1em;
+}
+
+.retourLogo {
+  @include desktop {
+    display: none;
+  }
+}
+
+.menuItem {
+  color: $tertiary-color;
+}
+
+.menuItem:hover {
+  color: $tertiary-color;
+}
+
+.architecte {
+  height: 10em;
+  margin: 1em;
+
+  @include mobile {
+    height: 5em;
+  }
+}
+
+.logo {
+  height: 10em;
+
+  @include mobile {
+    height: 5em;
+  }
+}
+
+.menu {
+  margin-top: 6em;
+
+  @include mobile {
+    margin-top: 0;
+    position: absolute;
+    top: 0em;
+  }
+}
+
+.iconeMenu {
+  width: 1em;
+  margin-right: 1em;
+}
+
+.lienChemin {
+  color: $primary-color;
+  text-decoration: none;
+  margin-left: 1em;
+
+  @include mobile {
+    font-size: smaller;
+  }
+}
+
+input {
+  outline-color: $primary-color;
+  margin-right: 1em;
+}
+
+.barreDeRecherche {
+  display: flex;
+  align-items: center;
+  max-width: 300px;
+  border-bottom: 1px solid $primary-color;
+  border-right: solid 1px $primary-color;
+  padding: 5px 8px;
+  width: 250px;
+  margin-bottom: 5px;
+
+  @include mobile {
+    border: none;
+    width: 50;
+    position: absolute;
+    left: 8em;
+    top: 0.7em;
+  }
+}
+
+// Formulaire
+
+.formulaireContact {
+  border: solid $primary-color 2px;
+  padding: 2em;
+  border-radius: 10px;
+  margin-bottom: 1em;
+}
+
+// Top des artisans
+
+.topCard {
+  border: none;
+}
+
+.card-img-top {
+  height: 15em;
+  object-fit: cover;
+  @include mobile {
+    display: none;
+  }
+}
+
+.card-title {
+  text-align: right;
+  border-left: solid 1px $primary-color;
+  margin-left: 1em;
+}
+
+.h4Text {
+  text-align: right;
+  font-size: medium;
+  margin-left: 2em;
+}
+
+.topLien {
+  text-decoration: none;
+  @include mobile {
+    font-size: large;
+  }
+}
+
+.noteTop {
+  @include mobile {
+    font-size: small;
+  }
+}

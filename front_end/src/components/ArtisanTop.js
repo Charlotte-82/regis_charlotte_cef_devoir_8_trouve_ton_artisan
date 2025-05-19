@@ -13,46 +13,33 @@ function TopArtisans() {
   }, []);
 
   return (
-    <div className="container mt-5">
+    <div className="container mt-1">
       <div className="row">
         {Array.isArray(artisans) &&
           artisans.map((a, index) => (
             <div className="col-md-4 d-flex justify-content-around" key={index}>
-              <div className="card mb-4" style={{ border: "none" }}>
+              <div className="card mb-4 topCard">
                 {a.image && (
                   <img
                     src={a.image}
                     alt={`Portrait de ${a.nom}`}
                     className="card-img-top"
-                    style={{ height: "200px", objectFit: "cover" }}
                   />
                 )}
                 <div className="card-body">
-                  <h3
-                    className="card-title"
-                    style={{
-                      textAlign: "right",
-                      borderLeft: "solid 1px #0074c7",
-                      marginLeft: "1em",
-                    }}
-                  >
-                    <Link to={`/ficheartisan/${a.id}`}>{a.nom}</Link>
+                  <h3 className="card-title">
+                    <Link className="topLien" to={`/ficheartisan/${a.id}`}>
+                      {a.nom}
+                    </Link>
                   </h3>
-                  <h4
-                    className="card-subtitle mb-2 text-muted"
-                    style={{
-                      textAlign: "right",
-                      fontSize: "medium",
-                      marginLeft: "2em",
-                    }}
-                  >
+                  <h4 className="card-subtitle mb-2 text-muted h4Text">
                     {a.specialite} — {a.ville}
                   </h4>
 
-                  <p>
+                  <p className="noteTop">
                     <strong>Note :</strong> {a.note}/5
                   </p>
-                  <p>{a.apropos}</p>
+                  <p className="noteTop">{a.apropos}</p>
                 </div>
                 <Link to={`/ficheartisan/${a.id}`}>
                   <button className="boutonDecouvrir">
