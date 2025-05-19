@@ -13,19 +13,7 @@ function BarreRecherche() {
   };
 
   return (
-    <form
-      onSubmit={handleSubmit}
-      style={{
-        display: "flex",
-        alignItems: "center",
-        maxWidth: "300px",
-        borderBottom: "1px solid #0074c7",
-        borderRight: "solid 1px #0074c7",
-        padding: "5px 8px",
-        width: "250px",
-        marginBottom: "5px",
-      }}
-    >
+    <form onSubmit={handleSubmit} className="barreDeRecherche">
       <input
         type="text"
         value={recherche}

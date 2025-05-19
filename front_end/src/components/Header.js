@@ -19,48 +19,42 @@ function Header() {
         {/* barre de recherche */}
         <BarreRecherche />
         {/* barre de navigation */}
-        <div className="menu">
-          <a href="/par-categorie/alimentation" className="menuItem">
-            Alimentation
-          </a>
-          <span>
-            <img
-              src={Arrow}
-              alt="icône de flêche vers le bas"
-              className="iconeMenu"
-            />
-          </span>
-          <a href="/par-categorie/batiment" className="menuItem">
-            Bâtiment
-          </a>
-          <span>
-            <img
-              src={Arrow}
-              alt="icône de flêche vers le bas"
-              className="iconeMenu"
-            />
-          </span>
-          <a href="/par-categorie/fabrication" className="menuItem">
-            Fabrication
-          </a>
-          <span>
-            <img
-              src={Arrow}
-              alt="icône de flêche vers le bas"
-              className="iconeMenu"
-            />
-          </span>
-          <a href="/par-categorie/services" className="menuItem">
-            Services
-          </a>
-          <span>
-            <img
-              src={Arrow}
-              alt="icône de flêche vers le bas"
-              className="iconeMenu"
-            />
-          </span>
-        </div>
+        <nav className="navbar navbar-expand-lg navbar-light bg-light menu">
+          <div className="container-fluid">
+            <button
+              className="navbar-toggler"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#navbarNavAltMarkup"
+              aria-controls="navbarNavAltMarkup"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+            >
+              <span className="navbar-toggler-icon"></span>
+            </button>
+
+            <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
+              <div className="navbar-nav">
+                <a className="nav-link" href="/par-categorie/alimentation">
+                  Alimentation{" "}
+                  <img src={Arrow} alt="flèche" className="ms-1 iconeMenu" />
+                </a>
+                <a className="nav-link" href="/par-categorie/batiment">
+                  Bâtiment{" "}
+                  <img src={Arrow} alt="flèche" className="ms-1 iconeMenu" />
+                </a>
+                <a className="nav-link" href="/par-categorie/fabrication">
+                  Fabrication{" "}
+                  <img src={Arrow} alt="flèche" className="ms-1 iconeMenu" />
+                </a>
+                <a className="nav-link" href="/par-categorie/services">
+                  Services{" "}
+                  <img src={Arrow} alt="flèche" className="ms-1 iconeMenu" />
+                </a>
+              </div>
+            </div>
+          </div>
+        </nav>
       </div>
     </div>
   );

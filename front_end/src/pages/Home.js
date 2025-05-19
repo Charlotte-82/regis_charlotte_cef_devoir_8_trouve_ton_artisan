@@ -6,7 +6,9 @@ function Home() {
   return (
     <div style={{ marginTop: "1em" }}>
       {/* chemin emprunté par l'utilisateur depuis la page d'accueil */}
-      <a href="/">Accueil</a>
+      <a href="/" className="lienChemin">
+        Accueil
+      </a>
       <span>
         <img
           src={Chevron}
@@ -14,6 +16,8 @@ function Home() {
           className="chevronMenu"
         ></img>
       </span>
+
+      {/* contenu page */}
       <h1>La Plateforme de recherche d'un artisan de votre région</h1>
       <div className="d-flex justify-content-between align-items-start px-3 py-2">
         <div
@@ -85,11 +89,9 @@ function Home() {
             </button>
           </a>
         </div>
-        <img
-          src={Artisan}
-          alt="des mains d'artisan maniant un rabot"
-          style={{ width: "30%", marginRight: "2em" }}
-        ></img>
+        <figure className="imageAccueil">
+          <img src={Artisan} alt="des mains d'artisan maniant un rabot"></img>
+        </figure>
       </div>
 
       <hr className="hrTitre2" style={{ marginLeft: "6em" }} />

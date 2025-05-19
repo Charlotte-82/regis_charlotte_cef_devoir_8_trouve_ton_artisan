@@ -3,6 +3,11 @@ h1 {
   color: $secondary-color;
   font-weight: 700;
   font-family: $font-main;
+
+  @include mobile {
+    font-size: larger;
+    margin-left: 0.8em;
+  }
 }
 
 .hrTitre2 {
@@ -10,6 +15,11 @@ h1 {
   border: 4px solid $primary-color;
   opacity: 1;
   width: 2.5em;
+
+  @include mobile {
+    border: 2px solid $primary-color;
+    width: 1.5em;
+  }
 }
 
 h2 {
@@ -56,24 +66,24 @@ body {
   border-bottom: $secondary-color solid 1px;
 }
 
-a {
-  color: $secondary-color;
-  text-decoration: none;
-  margin-left: 1em;
-  margin-right: 1em;
-}
+// a {
+//   color: $secondary-color;
+//   text-decoration: none;
+//   margin-left: 1em;
+//   margin-right: 1em;
+// }
 
-a:hover {
-  color: $secondary-color;
-  text-decoration: none;
-  margin-left: "1em";
-}
+// a:hover {
+//   color: $secondary-color;
+//   text-decoration: none;
+//   margin-left: "1em";
+// }
 
-a:active {
-  color: $active-color;
-  text-decoration: underline;
-  margin-left: "1em";
-}
+// a:active {
+//   color: $active-color;
+//   text-decoration: underline;
+//   margin-left: "1em";
+// }
 
 .card-title {
   color: $secondary-color;
@@ -129,14 +139,28 @@ a:active {
 .architecte {
   height: 10em;
   margin: 1em;
+
+  @include mobile {
+    height: 5em;
+  }
 }
 
 .logo {
   height: 10em;
+
+  @include mobile {
+    height: 2em;
+  }
 }
 
 .menu {
   margin-top: 6em;
+
+  @include mobile {
+    margin-top: 0;
+    position: absolute;
+    top: 0em;
+  }
 }
 
 .iconeMenu {
@@ -144,9 +168,38 @@ a:active {
   margin-right: 1em;
 }
 
+.lienChemin {
+  color: $primary-color;
+  text-decoration: none;
+  margin-left: 1em;
+
+  @include mobile {
+    font-size: smaller;
+  }
+}
+
 input {
   outline-color: $primary-color;
   margin-right: 1em;
+}
+
+.barreDeRecherche {
+  display: flex;
+  align-items: center;
+  max-width: 300px;
+  border-bottom: 1px solid $primary-color;
+  border-right: solid 1px $primary-color;
+  padding: 5px 8px;
+  width: 250px;
+  margin-bottom: 5px;
+
+  @include mobile {
+    border: none;
+    width: 50;
+    position: absolute;
+    left: 8em;
+    top: 0.7em;
+  }
 }
 
 // home
@@ -172,6 +225,11 @@ input {
 
 .card-title:hover {
   color: $hover-color;
+}
+
+.imageAccueil {
+  width: "30%";
+  margin-right: "2em";
 }
 
 // recherche

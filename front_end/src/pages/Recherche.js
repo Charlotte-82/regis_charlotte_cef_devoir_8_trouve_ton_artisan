@@ -11,7 +11,9 @@ function Recherche() {
       {/* début entête */}
       <div style={{ marginTop: "1em" }}>
         {/* chemin emprunté par l'utilisateur depuis la page d'accueil */}
-        <a href="/">Accueil</a>
+        <a href="/" style={{ color: "#0074c7" }}>
+          Accueil
+        </a>
         <span>
           <img
             src={Chevron}
@@ -19,7 +21,9 @@ function Recherche() {
             className="chevronMenu"
           ></img>
         </span>
-        <a href="/categoriepage">Catégorie</a>
+        <a href="/categoriepage" style={{ color: "#0074c7" }}>
+          Catégorie
+        </a>
         <span>
           <img
             src={Chevron}
@@ -27,7 +31,9 @@ function Recherche() {
             className="chevronMenu"
           ></img>
         </span>
-        <a href={`/par-categorie/${categorie}`}>{categorie}</a>{" "}
+        <a href={`/par-categorie/${categorie}`} style={{ color: "#0074c7" }}>
+          {categorie}
+        </a>{" "}
         <span>
           <img
             src={Chevron}
