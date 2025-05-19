@@ -4,6 +4,7 @@ function FormulaireContact({ artisanNom }) {
   const [formData, setFormData] = useState({
     nom: "",
     email: "",
+    objet: "",
     message: "",
   });
 
@@ -29,7 +30,9 @@ function FormulaireContact({ artisanNom }) {
 
   return (
     <div className="mt-5">
-      <h3>Contacter l’artisan {artisanNom}</h3>
+      <h3>
+        Contactez l’artisan <strong>{artisanNom}</strong>
+      </h3>
 
       {envoiReussi && (
         <div className="alert alert-success">
@@ -37,7 +40,7 @@ function FormulaireContact({ artisanNom }) {
         </div>
       )}
 
-      <form onSubmit={handleSubmit} className="mt-3">
+      <form onSubmit={handleSubmit} className="mt-3 formulaireContact">
         <div className="mb-3">
           <label htmlFor="nom" className="form-label">
             Votre nom
@@ -69,8 +72,23 @@ function FormulaireContact({ artisanNom }) {
         </div>
 
         <div className="mb-3">
+          <label htmlFor="objet" className="form-label">
+            L'objet de votre message
+          </label>
+          <input
+            type="text"
+            id="objet"
+            name="objet"
+            value={formData.objet}
+            onChange={handleChange}
+            className="form-control"
+            required
+          />
+        </div>
+
+        <div className="mb-3">
           <label htmlFor="message" className="form-label">
-            Votre message
+            Décrivez votre projet
           </label>
           <textarea
             id="message"
@@ -83,8 +101,8 @@ function FormulaireContact({ artisanNom }) {
           ></textarea>
         </div>
 
-        <button type="submit" className="btn btn-primary">
-          Envoyer
+        <button type="submit" className="boutonBasPage">
+          Demander un devis
         </button>
       </form>
     </div>

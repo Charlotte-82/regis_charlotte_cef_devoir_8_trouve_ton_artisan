@@ -205,3 +205,18 @@ input {
   border-left: solid 1px $primary-color;
   padding-left: 2em;
 }
+
+// Fiche de l'artisan
+
+.imageFiche {
+  height: 20em;
+}
+
+// Formulaire
+
+.formulaireContact {
+  border: solid $primary-color 2px;
+  padding: 2em;
+  border-radius: 10px;
+  margin-bottom: 1em;
+}

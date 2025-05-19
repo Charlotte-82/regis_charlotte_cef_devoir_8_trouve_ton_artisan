@@ -1,6 +1,7 @@
 import Architecte from "../assets/images/architecte.png";
 import Logo from "../assets/images/Logo.png";
 import Arrow from "../assets/images/down-arrow.png";
+import BarreRecherche from "./BarreRechercheHeader";
 
 function Header() {
   return (
@@ -16,29 +17,7 @@ function Header() {
       </div>
       <div className="d-flex flex-column justify-content-between align-items-end">
         {/* barre de recherche */}
-        <div
-          style={{
-            maxWidth: "300px",
-            border: "none",
-            borderBottom: "1px solid #0074c7",
-            borderRight: "solid 1px #0074c7",
-            outline: "none",
-            padding: "5px 8px",
-            width: "250px",
-            marginBottom: "5px",
-          }}
-        >
-          <input type="text" style={{ border: "none" }} />
-          <span>
-            <i
-              className="fas fa-search"
-              style={{
-                color: "#0074c7",
-                paddingBottom: "0.5em",
-              }}
-            ></i>
-          </span>
-        </div>
+        <BarreRecherche />
         {/* barre de navigation */}
         <div className="menu">
           <a href="/par-categorie/alimentation" className="menuItem">

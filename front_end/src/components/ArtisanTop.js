@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { getArtisansTop } from "../services/artisansServices";
+import { Link } from "react-router-dom";
 
 function TopArtisans() {
   const [artisans, setArtisans] = useState([]);
@@ -35,7 +36,7 @@ function TopArtisans() {
                       marginLeft: "1em",
                     }}
                   >
-                    {a.nom}
+                    <Link to={`/ficheartisan/${a.id}`}>{a.nom}</Link>
                   </h3>
                   <h4
                     className="card-subtitle mb-2 text-muted"
@@ -53,7 +54,7 @@ function TopArtisans() {
                   </p>
                   <p>{a.apropos}</p>
                 </div>
-                <a href="/ficheartisan/:id">
+                <Link to={`/ficheartisan/${a.id}`}>
                   <button className="boutonDecouvrir">
                     Découvrir
                     <i
@@ -61,7 +62,7 @@ function TopArtisans() {
                       style={{ marginLeft: "2em" }}
                     ></i>
                   </button>
-                </a>
+                </Link>
               </div>
             </div>
           ))}

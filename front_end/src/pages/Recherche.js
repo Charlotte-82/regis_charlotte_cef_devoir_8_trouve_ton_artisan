@@ -1,6 +1,6 @@
 import FiltreArtisan from "../components/FiltreArtisans";
 import Chevron from "../assets/images/chevron-droit.png";
-import { useParams } from "react-router-dom"; // Si la catégorie vient du paramètre de l'URL
+import { useParams } from "react-router-dom";
 
 function Recherche() {
   const { categorie } = useParams(); // Récupérer le nom de la catégorie depuis l'URL

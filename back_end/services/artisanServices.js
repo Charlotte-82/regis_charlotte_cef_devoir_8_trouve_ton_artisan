@@ -43,6 +43,7 @@ exports.getArtisanById = async (id) => {
 exports.fetchTopArtisans = async () => {
   const sql = `
     SELECT 
+      a.Id_artisan AS id,
       a.artisan_image AS image,
       a.artisan_nom AS nom,
       a.artisan_note AS note,

@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { getSpecialitesByCategorie } from "../services/specialitesServices";
 import { getVillesBySpecialite } from "../services/villesServices";
 import { getArtisansFiltres } from "../services/artisansServices";
+import { Link } from "react-router-dom";
 
 function FiltreArtisans() {
   const { categorie } = useParams();
@@ -39,7 +40,10 @@ function FiltreArtisans() {
   const handleRecherche = () => {
     if (specialiteChoisie && villeChoisie) {
       getArtisansFiltres(specialiteChoisie, villeChoisie)
-        .then((data) => setArtisans(data))
+        .then((data) => {
+          console.log("Datas récupérées du back:", data);
+          setArtisans(data);
+        })
         .catch(console.error);
     }
   };
@@ -126,11 +130,11 @@ function FiltreArtisans() {
           <p style={{ visibility: "hidden" }}>Aucun artisan trouvé.</p>
         ) : (
           artisans.map((a) => (
-            <div key={a.Id_artisan}>
+            <div key={a.id_artisan}>
               <h5 className="resultatRecherche">{a.artisan_nom}</h5>
 
               <p style={{ width: "50%" }}>{a.artisan_apropos}</p>
-              <a href="/ficheartisan/:id">
+              <Link to={`/ficheartisan/${a.id_artisan}`}>
                 <button
                   className="boutonDecouvrir"
                   style={{ marginBottom: "2em" }}
@@ -141,7 +145,7 @@ function FiltreArtisans() {
                     style={{ marginLeft: "2em" }}
                   ></i>
                 </button>
-              </a>
+              </Link>
             </div>
           ))
         )}

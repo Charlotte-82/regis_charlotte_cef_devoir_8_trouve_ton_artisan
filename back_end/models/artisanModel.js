@@ -23,6 +23,7 @@ const Artisan = sequelize.define(
       validate: { min: 0.0, max: 5.0 },
     },
     artisan_top: { type: DataTypes.BOOLEAN, defaultValue: false },
+    artisan_image: { type: DataTypes.STRING },
     Id_specialite: {
       type: DataTypes.INTEGER,
       references: {
