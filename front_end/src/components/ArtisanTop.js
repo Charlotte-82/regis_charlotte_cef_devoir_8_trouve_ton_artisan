@@ -1,16 +1,12 @@
-import { useEffect, useState } from "react";
+import useFetch from "../hooks/useFetch";
 import { getArtisansTop } from "../services/artisansServices";
 import { Link } from "react-router-dom";
 
 function TopArtisans() {
-  const [artisans, setArtisans] = useState([]);
+  const { data: artisans, loading, error } = useFetch(getArtisansTop);
 
-  useEffect(() => {
-    getArtisansTop().then((res) => {
-      console.log("Réponse complète :", res);
-      setArtisans(res.data);
-    });
-  }, []);
+  if (loading) return <p>Chargement...</p>;
+  if (error) return <p>Erreur lors du chargement des artisans.</p>;
 
   return (
     <div className="container mt-1">

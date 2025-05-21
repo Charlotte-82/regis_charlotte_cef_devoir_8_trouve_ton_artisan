@@ -1,4 +1,5 @@
 import { useState } from "react";
+import usePost from "../hooks/usePost";
 
 function FormulaireContact({ artisanNom, artisanEmail }) {
   const [formData, setFormData] = useState({
@@ -9,7 +10,9 @@ function FormulaireContact({ artisanNom, artisanEmail }) {
     message: "",
   });
 
-  const [envoiReussi, setEnvoiReussi] = useState(false);
+  const { postData, isLoading, isSuccess, error } = usePost(
+    "http://localhost:3001/api/contact"
+  );
 
   const handleChange = (e) => {
     setFormData({
@@ -21,48 +24,30 @@ function FormulaireContact({ artisanNom, artisanEmail }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    try {
-      const response = await fetch("http://localhost:3001/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          ...formData,
-          destinataire: artisanEmail,
-        }),
-      });
+    await postData({ ...formData, destinataire: artisanEmail });
 
-      if (response.ok) {
-        setEnvoiReussi(true);
-        setFormData({
-          nom: "",
-          email: "",
-          telephone: "",
-          objet: "",
-          message: "",
-        });
-      } else {
-        console.error("Erreur lors de l'envoi du message");
-      }
-    } catch (err) {
-      console.error("Erreur réseau :", err);
-      alert(
-        "Votre message n'a pas pu être envoyé. Veuillez réessayer plus tard."
-      );
+    if (!error) {
+      setFormData({
+        nom: "",
+        email: "",
+        telephone: "",
+        objet: "",
+        message: "",
+      });
     }
   };
 
   return (
     <div className="mt-5">
-      <hr className="hrTitre2"></hr>
+      <hr className="hrTitre2" />
       <h2>
         Contactez l’artisan <strong>{artisanNom}</strong>
       </h2>
 
-      {/* {envoiReussi && (
-        <div className="alert alert-success">
-          Votre message a bien été envoyé !
-        </div>
-      )} */}
+      {isSuccess && (
+        <p className="alert alert-success">Message envoyé avec succès !</p>
+      )}
+      {error && <p className="alert alert-danger">Erreur : {error}</p>}
 
       <form onSubmit={handleSubmit} className="mt-3 formulaireContact">
         <div className="mb-3">
@@ -137,8 +122,8 @@ function FormulaireContact({ artisanNom, artisanEmail }) {
           </div>
         </div>
 
-        <button type="submit" className="boutonBasPage">
-          Demander un devis
+        <button type="submit" className="boutonBasPage" disabled={isLoading}>
+          {isLoading ? "Envoi en cours..." : "Demander un devis"}
         </button>
       </form>
     </div>

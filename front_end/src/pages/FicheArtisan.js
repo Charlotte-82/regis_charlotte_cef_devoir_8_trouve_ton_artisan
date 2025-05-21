@@ -1,29 +1,17 @@
 import { useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
-import { getArtisanById } from "../services/artisansServices";
-import FormulaireContact from "../components/FormulaireContact";
 import Chevron from "../assets/images/chevron-droit.png";
+import FormulaireContact from "../components/FormulaireContact";
+import { getArtisanById } from "../services/artisansServices";
+import useFetchParam from "../hooks/useFetchParam";
 
 function FicheArtisan() {
   const { id } = useParams();
 
-  console.log("ID reçu dans URL :", id);
+  const { data: artisan, loading, error } = useFetchParam(getArtisanById, id);
 
-  const [artisan, setArtisan] = useState(null);
-
-  useEffect(() => {
-    console.log("Appel API avec l'ID :", id);
-    getArtisanById(id)
-      .then((res) => {
-        console.log("Réponse du back :", res);
-        setArtisan(res);
-      })
-      .catch((err) => console.error("Erreur API :", err));
-  }, [id]);
-
-  if (!artisan) return <p>Chargement...</p>;
-
-  console.log("Objet artisan :", artisan);
+  if (loading) return <p>Chargement...</p>;
+  if (error) return <p>Erreur lors du chargement de l’artisan : {error}</p>;
+  if (!artisan) return <p>Aucun artisan trouvé.</p>;
 
   const noteEtoile = (note) => {
     const etoiles = [];
@@ -44,86 +32,58 @@ function FicheArtisan() {
 
   return (
     <div className="container mt-4">
-      <a href="/" className="lienChemin">
-        Accueil
-      </a>
-      <span>
-        <img
-          src={Chevron}
-          alt="icône de chevron vers la droite"
-          className="chevronMenu"
-        ></img>
-      </span>
-      <a href="/categoriepage" className="lienChemin">
-        Catégorie
-      </a>
-      <span>
-        <img
-          src={Chevron}
-          alt="icône de chevron vers la droite"
-          className="chevronMenu"
-        ></img>
-      </span>
-      <a
-        href={`/par-categorie/${artisan?.specialite?.categorie?.categorie_libelle}`}
-        className="lienChemin"
-      >
-        {artisan?.specialite?.categorie?.categorie_libelle}
-      </a>{" "}
-      <span>
-        <img
-          src={Chevron}
-          alt="icône de chevron vers la droite"
-          className="chevronMenu"
-        ></img>
-      </span>
-      <a
-        href={`/par-categorie/${artisan?.specialite?.categorie?.categorie_libelle}`}
-        className="lienChemin"
-      >
-        {artisan?.specialite?.specialite_libelle}
-      </a>{" "}
-      <span>
-        <img
-          src={Chevron}
-          alt="icône de chevron vers la droite"
-          className="chevronMenu"
-        ></img>
-      </span>
-      <a href={`/ficheartisan/${artisan?.id_artisan}`} className="lienChemin">
-        {artisan?.artisan_nom}
-      </a>{" "}
-      <span>
-        <img
-          src={Chevron}
-          alt="icône de chevron vers la droite"
-          className="chevronMenu"
-        ></img>
-      </span>
+      <nav className="chemin">
+        <a href="/" className="lienChemin">
+          Accueil
+        </a>
+        <img src={Chevron} alt="chevron" className="chevronMenu" />
+        <a href="/categoriepage" className="lienChemin">
+          Catégorie
+        </a>
+        <img src={Chevron} alt="chevron" className="chevronMenu" />
+        <a
+          href={`/par-categorie/${artisan?.specialite?.categorie?.categorie_libelle}`}
+          className="lienChemin"
+        >
+          {artisan?.specialite?.categorie?.categorie_libelle}
+        </a>
+        <img src={Chevron} alt="chevron" className="chevronMenu" />
+        <a
+          href={`/par-categorie/${artisan?.specialite?.categorie?.categorie_libelle}`}
+          className="lienChemin"
+        >
+          {artisan?.specialite?.specialite_libelle}
+        </a>
+        <img src={Chevron} alt="chevron" className="chevronMenu" />
+        <a href={`/ficheartisan/${artisan?.id_artisan}`} className="lienChemin">
+          {artisan?.artisan_nom}
+        </a>
+      </nav>
+
       <div>
-        <h1>{artisan?.artisan_nom}</h1>
-        <hr className="hrTitre2"></hr>
-        <h2>{artisan?.specialite?.specialite_libelle || "Non renseignée"}</h2>
+        <h1>{artisan.artisan_nom}</h1>
+        <hr className="hrTitre2" />
+        <h2>{artisan.specialite?.specialite_libelle || "Non renseignée"}</h2>
+
         <div className="row">
           <div className="col colonneImage">
             <img
-              src={artisan?.artisan_image}
-              alt={artisan?.artisan_nom}
+              src={artisan.artisan_image}
+              alt={artisan.artisan_nom}
               className="imageFiche"
             />
           </div>
+
           <div className="col colonneVille">
             <p>
               <strong>Ville :</strong>{" "}
               {artisan?.ville?.ville_nom || "Non renseignée"}
             </p>
-
-            <p>{artisan?.artisan_apropos}</p>
+            <p>{artisan.artisan_apropos}</p>
             <p>
-              <strong>Note :</strong> {noteEtoile(Number(artisan.artisan_note))}
-              ({artisan?.artisan_note}/5){" "}
+              <strong>Note :</strong> {noteEtoile(Number(artisan.artisan_note))}{" "}
+              ({artisan.artisan_note}/5)
             </p>
-            <div className="d-flex align-items-center"></div>
 
             {artisan?.artisan_site && (
               <p>
@@ -138,6 +98,7 @@ function FicheArtisan() {
           </div>
         </div>
       </div>
+
       <FormulaireContact
         artisanNom={artisan.artisan_nom}
         artisanEmail={artisan.artisan_email}

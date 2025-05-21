@@ -1,9 +1,11 @@
-export const getVillesBySpecialite = async (specialite) => {
-  const response = await fetch(
-    `http://localhost:5000/api/villes/par-specialite/${specialite}`
+import axios from "axios";
+
+const API_BASE_URL = process.env.REACT_APP_API_URL || "http://localhost:5000";
+
+export const getVillesBySpecialite = (specialite) => {
+  return axios.get(
+    `${API_BASE_URL}/api/villes/par-specialite/${encodeURIComponent(
+      specialite
+    )}`
   );
-  if (!response.ok) {
-    throw new Error("Erreur lors du chargement des villes");
-  }
-  return await response.json();
 };
