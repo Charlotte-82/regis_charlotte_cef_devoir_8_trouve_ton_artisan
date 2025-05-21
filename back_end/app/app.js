@@ -15,9 +15,13 @@ const categorieRoutes = require("../routes/categorieRoutes");
 const contactRoutes = require("../routes/contactRoutes");
 
 app.use(express.json());
+const frontendUrl = process.env.FRONTEND_URL || "http://localhost:3000";
+
 app.use(
   cors({
-    origin: "http://localhost:3000",
+    origin: frontendUrl,
+    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+    optionsSuccessStatus: 204,
   })
 );
 app.use("/api/artisans", artisanRoutes);

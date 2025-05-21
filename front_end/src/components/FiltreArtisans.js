@@ -1,52 +1,30 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useParams } from "react-router-dom";
 import { getSpecialitesByCategorie } from "../services/specialitesServices";
 import { getVillesBySpecialite } from "../services/villesServices";
 import { getArtisansFiltres } from "../services/artisansServices";
 import { Link } from "react-router-dom";
+import useFetchParam from "../hooks/useFetchParam";
 
 function FiltreArtisans() {
   const { categorie } = useParams();
-  const [specialites, setSpecialites] = useState([]);
-  const [villes, setVilles] = useState([]);
+  const { data: specialites } = useFetchParam(
+    getSpecialitesByCategorie,
+    categorie
+  );
+  const { data: villes } = useFetchParam(
+    getVillesBySpecialite,
+    specialiteChoisie
+  );
+
   const [specialiteChoisie, setSpecialiteChoisie] = useState("");
   const [villeChoisie, setVilleChoisie] = useState("");
   const [artisans, setArtisans] = useState([]);
 
-  console.log("Catégorie reçue depuis l'URL :", categorie);
-
-  // Récupérer les spécialités à partir de la catégorie
-  useEffect(() => {
-    if (categorie) {
-      getSpecialitesByCategorie(categorie)
-        .then((data) => setSpecialites(data))
-        .catch(console.error);
-    }
-  }, [categorie]);
-
-  // Récupérer les villes quand une spécialité est choisie
-  useEffect(() => {
-    if (specialiteChoisie) {
-      getVillesBySpecialite(specialiteChoisie)
-        .then((data) => {
-          console.log("Villes reçues :", data);
-          setVilles(data);
-        })
-        .catch(console.error);
-    } else {
-      setVilles([]);
-      setVilleChoisie("");
-    }
-  }, [specialiteChoisie]);
-
-  // Fonction pour rechercher les artisans
   const handleRecherche = () => {
     if (specialiteChoisie && villeChoisie) {
       getArtisansFiltres(specialiteChoisie, villeChoisie)
-        .then((data) => {
-          console.log("Datas récupérées du back:", data);
-          setArtisans(data);
-        })
+        .then(setArtisans)
         .catch(console.error);
     }
   };

@@ -1,45 +1,37 @@
 import axios from "axios";
 
-const API_URL = "http://localhost:5000/api/artisans";
+const API_BASE_URL = process.env.REACT_APP_API_URL || "http://localhost:5000";
+const ARTISANS_URL = `${API_BASE_URL}/api/artisans`;
 
 export const getTousLesArtisans = () => {
-  return axios.get(API_URL);
+  return axios.get(ARTISANS_URL);
 };
 
 export const getArtisansParCategorie = (categorie) => {
-  return axios.get(`${API_URL}?categorie=${categorie}`);
+  return axios.get(
+    `${ARTISANS_URL}?categorie=${encodeURIComponent(categorie)}`
+  );
 };
 
-export const getArtisanById = async (id) => {
-  const response = await fetch(`http://localhost:5000/api/artisans/${id}`);
-  if (!response.ok) {
-    throw new Error("Erreur lors de la récupération de l'artisan");
-  }
-  return await response.json();
+export const getArtisanById = (id) => {
+  return axios.get(`${ARTISANS_URL}/${id}`);
 };
 
 export const getArtisansParSpecialite = (specialite) => {
-  return axios.get(`${API_URL}?specialite=${specialite}`);
-};
-
-export const getArtisansTop = async () => {
-  const response = await fetch("http://localhost:5000/api/artisans/top");
-  if (!response.ok) {
-    throw new Error("Erreur réseau lors de la récupération des top artisans");
-  }
-  const result = await response.json();
-
-  return result;
-};
-
-export const getArtisansFiltres = async (specialite, ville) => {
-  const response = await fetch(
-    `http://localhost:5000/api/artisans/filtres?specialite=${encodeURIComponent(
-      specialite
-    )}&ville=${encodeURIComponent(ville)}`
+  return axios.get(
+    `${ARTISANS_URL}?specialite=${encodeURIComponent(specialite)}`
   );
-  if (!response.ok) {
-    throw new Error("Erreur lors de la récupération des artisans filtrés");
-  }
-  return await response.json();
+};
+
+export const getArtisansTop = () => {
+  return axios.get(`${ARTISANS_URL}/top`);
+};
+
+export const getArtisansFiltres = (specialite, ville) => {
+  return axios.get(`${ARTISANS_URL}/filtres`, {
+    params: {
+      specialite,
+      ville,
+    },
+  });
 };
