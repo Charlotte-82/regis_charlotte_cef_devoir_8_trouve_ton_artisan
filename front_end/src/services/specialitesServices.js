@@ -1,9 +1,11 @@
-export const getSpecialitesByCategorie = async (categorie) => {
-  const response = await fetch(
-    `http://localhost:5000/api/specialites/par-categorie/${categorie}`
+import axios from "axios";
+
+const API_BASE_URL = process.env.REACT_APP_API_URL || "http://localhost:5000";
+
+export const getSpecialitesByCategorie = (categorie) => {
+  return axios.get(
+    `${API_BASE_URL}/api/specialites/par-categorie/${encodeURIComponent(
+      categorie
+    )}`
   );
-  if (!response.ok) {
-    throw new Error("Erreur lors du chargement des spécialités");
-  }
-  return await response.json();
 };

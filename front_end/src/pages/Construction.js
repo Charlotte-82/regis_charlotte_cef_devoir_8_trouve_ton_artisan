@@ -1,4 +1,3 @@
-import React from "react";
 import Construction from "../assets/images/construction.png";
 
 function Page404() {
