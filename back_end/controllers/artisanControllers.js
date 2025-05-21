@@ -1,75 +1,60 @@
 const artisanService = require("../services/artisanServices");
 
-// exports.creerArtisan = async (req, res) => {
-//   try {
-//     const nouvelArtisan = await artisanService.creerArtisanAvecRelations(
-//       req.body
-//     );
-//     res.status(201).json(nouvelArtisan);
-//   } catch (err) {
-//     console.error("L'artisan n'a pas pu être créé :", err);
-//     res.status(500).json({ message: "Erreur serveur", erreur: err.message });
-//   }
-// };
-
-exports.creerArtisan = async (req, res) => {
-  try {
-    const nouvelArtisan = await artisanService.creerArtisanAvecRelations(
-      req.body
-    );
-    res.status(201).json(nouvelArtisan);
-  } catch (err) {
-    console.error("L'artisan n'a pas pu être créé :", err);
-
-    // Si le message vient d’une erreur métier connue :
-    if (err.message.includes("Cette spécialité n'existe pas")) {
-      return res.status(400).json({ message: err.message });
-    }
-
-    // Sinon, erreur serveur par défaut
-    res.status(500).json({ message: "Erreur serveur", erreur: err.message });
-  }
-};
-
 exports.getArtisans = async (req, res) => {
   try {
-    const artisans = await artisanService.getTousArtisans();
+    const { categorie } = req.query;
+
+    let artisans;
+
+    if (categorie) {
+      artisans = await artisanService.getArtisansParCategorie(categorie);
+    } else {
+      artisans = await artisanService.getTousArtisans();
+    }
+
     res.status(200).json(artisans);
   } catch (err) {
-    console.error("Aucun artisan n'a été trouvé :", err);
+    console.error("Erreur lors de la récupération des artisans :", err);
     res.status(500).json({ message: "Erreur serveur", erreur: err.message });
   }
 };
 
 exports.getArtisanById = async (req, res) => {
   try {
-    const artisan = await artisanService.getArtisanById();
-    res.status(200).json(artisan);
+    const { id } = req.params;
+    const artisan = await artisanService.getArtisanById(id);
+    if (artisan) {
+      res.status(200).json(artisan);
+    } else {
+      res.status(404).json({ message: "Artisan non trouvé" });
+    }
   } catch (err) {
-    console.error("Aucun artisan n'a été trouvé :", err);
+    console.error("Erreur lors de la récupération de l'artisan :", err);
     res.status(500).json({ message: "Erreur serveur", erreur: err.message });
   }
 };
 
-exports.updateArtisan = async (req, res) => {
+exports.getTopArtisans = async (req, res) => {
   try {
-    const artisan = await artisanService.updateArtisan();
-    res.status(200).json(artisan);
-  } catch (err) {
-    console.error(
-      "Les informations de l'artisan n'ont pas été modifiées :",
-      err
+    const topArtisans = await artisanService.fetchTopArtisans();
+    console.log("Résultat reçu dans le contrôleur :", topArtisans);
+    res.json({ data: topArtisans });
+  } catch (error) {
+    console.error("Erreur dans getTopArtisans :", error);
+    res.status(500).json({ error: "Erreur serveur" });
+  }
+};
+
+exports.getArtisansFiltres = async (req, res) => {
+  try {
+    const { specialite, ville } = req.query;
+    const artisans = await artisanService.getArtisansByFiltres(
+      specialite,
+      ville
     );
-    res.status(500).json({ message: "Erreur serveur", erreur: err.message });
-  }
-};
-
-exports.deleteArtisan = async (req, res) => {
-  try {
-    const artisan = await artisanService.deleteArtisan();
-    res.status(200).json(artisan);
+    res.status(200).json(artisans);
   } catch (err) {
-    console.error("L'artisan n'a pas pu être effacé :", err);
+    console.error("Erreur lors de la récupération des artisans filtrés :", err);
     res.status(500).json({ message: "Erreur serveur", erreur: err.message });
   }
 };

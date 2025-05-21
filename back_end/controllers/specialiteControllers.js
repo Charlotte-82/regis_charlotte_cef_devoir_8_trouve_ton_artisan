@@ -1,17 +1,5 @@
 const specialiteService = require("../services/specialiteServices");
 
-exports.creerSpecialite = async (req, res) => {
-  try {
-    const nouvelleSpecialite = await specialiteService.creerSpecialite(
-      req.body
-    );
-    res.status(201).json(nouvelleSpecialite);
-  } catch (err) {
-    console.error("La spécialité n'a pas pu être créée :", err);
-    res.status(500).json({ message: "Erreur serveur", erreur: err.message });
-  }
-};
-
 exports.getSpecialites = async (req, res) => {
   try {
     const specialites = await specialiteService.getToutesSpecialites();
@@ -23,8 +11,10 @@ exports.getSpecialites = async (req, res) => {
 };
 
 exports.getSpecialiteById = async (req, res) => {
+  const { id } = req.params;
+
   try {
-    const specialite = await specialiteService.getSpecialiteById();
+    const specialite = await specialiteService.getSpecialiteById(id);
     res.status(200).json(specialite);
   } catch (err) {
     console.error("Aucune spécialité n'a été trouvée :", err);
@@ -32,25 +22,17 @@ exports.getSpecialiteById = async (req, res) => {
   }
 };
 
-exports.updateSpecialite = async (req, res) => {
+exports.getSpecialiteByCategorie = async (req, res) => {
   try {
-    const specialite = await specialiteService.updateSpecialite();
-    res.status(200).json(specialite);
-  } catch (err) {
-    console.error(
-      "Les informations de la spécialité n'ont pas été modifiées :",
-      err
-    );
-    res.status(500).json({ message: "Erreur serveur", erreur: err.message });
-  }
-};
+    const { categorie } = req.params;
+    console.log("Catégorie reçue :", req.params.categorie);
 
-exports.deleteSpecialite = async (req, res) => {
-  try {
-    const specialite = await specialiteService.deleteSpecialite();
-    res.status(200).json(specialite);
+    const specialites = await specialiteService.getSpecialiteByCategorie(
+      categorie
+    );
+    res.status(200).json(specialites);
   } catch (err) {
-    console.error("La spécialité n'a pas pu être effacée :", err);
+    console.error("Erreur dans getSpecialiteByCategorie :", err);
     res.status(500).json({ message: "Erreur serveur", erreur: err.message });
   }
 };
