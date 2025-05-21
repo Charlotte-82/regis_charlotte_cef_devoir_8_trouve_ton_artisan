@@ -1,3 +1,8 @@
+const path = require("path");
+const dotenv = require("dotenv");
+
+dotenv.config({ path: path.resolve(__dirname, "..", ".env") });
+
 const express = require("express");
 const cors = require("cors");
 const app = express();
@@ -7,6 +12,7 @@ const artisanRoutes = require("../routes/artisanRoutes");
 const villeRoutes = require("../routes/villeRoutes");
 const specialiteRoutes = require("../routes/specialiteRoutes");
 const categorieRoutes = require("../routes/categorieRoutes");
+const contactRoutes = require("../routes/contactRoutes");
 
 app.use(express.json());
 app.use(
@@ -18,6 +24,7 @@ app.use("/api/artisans", artisanRoutes);
 app.use("/api/villes", villeRoutes);
 app.use("/api/specialites", specialiteRoutes);
 app.use("/api/categories", categorieRoutes);
+app.use("/api/contact", contactRoutes);
 
 (async () => {
   try {

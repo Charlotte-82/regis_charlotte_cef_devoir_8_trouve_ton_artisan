@@ -45,6 +45,9 @@ function FormulaireContact({ artisanNom, artisanEmail }) {
       }
     } catch (err) {
       console.error("Erreur réseau :", err);
+      alert(
+        "Votre message n'a pas pu être envoyé. Veuillez réessayer plus tard."
+      );
     }
   };
 
@@ -55,11 +58,11 @@ function FormulaireContact({ artisanNom, artisanEmail }) {
         Contactez l’artisan <strong>{artisanNom}</strong>
       </h2>
 
-      {envoiReussi && (
+      {/* {envoiReussi && (
         <div className="alert alert-success">
           Votre message a bien été envoyé !
         </div>
-      )}
+      )} */}
 
       <form onSubmit={handleSubmit} className="mt-3 formulaireContact">
         <div className="mb-3">
