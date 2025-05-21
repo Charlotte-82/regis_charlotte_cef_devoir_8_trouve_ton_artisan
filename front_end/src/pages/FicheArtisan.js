@@ -65,7 +65,20 @@ function FicheArtisan() {
         ></img>
       </span>
       <a
-        href={`/par-categorie/${artisan?.specialite?.specialite_libelle}`}
+        href={`/par-categorie/${artisan?.specialite?.categorie?.categorie_libelle}`}
+        className="lienChemin"
+      >
+        {artisan?.specialite?.categorie?.categorie_libelle}
+      </a>{" "}
+      <span>
+        <img
+          src={Chevron}
+          alt="icône de chevron vers la droite"
+          className="chevronMenu"
+        ></img>
+      </span>
+      <a
+        href={`/par-categorie/${artisan?.specialite?.categorie?.categorie_libelle}`}
         className="lienChemin"
       >
         {artisan?.specialite?.specialite_libelle}
@@ -117,10 +130,7 @@ function FicheArtisan() {
                 <a href={artisan.artisan_site} target="_blank" rel="noreferrer">
                   <button className="boutonDecouvrir">
                     Aller sur le site de cet artisan
-                    <i
-                      className="bi bi-arrow-right"
-                      style={{ marginLeft: "2em" }}
-                    ></i>
+                    <i className="bi bi-arrow-right flecheDecouvrir"></i>
                   </button>
                 </a>
               </p>
@@ -128,7 +138,10 @@ function FicheArtisan() {
           </div>
         </div>
       </div>
-      <FormulaireContact artisanNom={artisan.artisan_nom} />
+      <FormulaireContact
+        artisanNom={artisan.artisan_nom}
+        artisanEmail={artisan.artisan_email}
+      />
     </div>
   );
 }

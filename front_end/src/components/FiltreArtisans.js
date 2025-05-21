@@ -113,7 +113,7 @@ function FiltreArtisans() {
             Rechercher
           </button>
         </div>
-        <div className="row" style={{ width: "50%" }}>
+        <div className="row imageRecherche">
           <img
             src={getImageParCategorie(categorie)}
             alt={categorie}
@@ -130,23 +130,17 @@ function FiltreArtisans() {
       {/* Résultats */}
       <div>
         {artisans.length === 0 ? (
-          <p style={{ visibility: "hidden" }}>Aucun artisan trouvé.</p>
+          <p className="zeroResultat">Aucun artisan trouvé.</p>
         ) : (
           artisans.map((a) => (
             <div key={a.id_artisan}>
               <h5 className="resultatRecherche">{a.artisan_nom}</h5>
 
-              <p style={{ width: "50%" }}>{a.artisan_apropos}</p>
+              <p className="blocResultat">{a.artisan_apropos}</p>
               <Link to={`/ficheartisan/${a.id_artisan}`}>
-                <button
-                  className="boutonDecouvrir"
-                  style={{ marginBottom: "2em" }}
-                >
+                <button className="boutonDecouvrir">
                   Découvrir
-                  <i
-                    className="bi bi-arrow-right"
-                    style={{ marginLeft: "2em" }}
-                  ></i>
+                  <i className="bi bi-arrow-right flecheDecouvrir"></i>
                 </button>
               </Link>
             </div>

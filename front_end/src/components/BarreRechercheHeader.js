@@ -19,6 +19,7 @@ function BarreRecherche() {
     <form onSubmit={handleSubmit} className="barreDeRecherche">
       {(afficherInput || !estMobile) && (
         <input
+          className="inputRecherche"
           type="text"
           value={recherche}
           onChange={(e) => setRecherche(e.target.value)}

@@ -161,7 +161,7 @@
 
 // Barre de recherche
 
-input {
+.inputRecherche {
   outline-color: $primary-color;
   flex: 1;
   padding: 4px;
@@ -213,6 +213,17 @@ input {
   padding: 2em;
   border-radius: 10px;
   margin-bottom: 1em;
+}
+
+.radioOption {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.5em;
+  margin-top: 1em;
+}
+
+.radioFormulaire {
+  margin-right: 0.5em;
 }
 
 // Top des artisans

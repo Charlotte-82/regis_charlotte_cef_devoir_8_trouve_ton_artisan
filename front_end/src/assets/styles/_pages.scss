@@ -117,6 +117,24 @@
   padding-left: 2em;
 }
 
+.imageRecherche {
+  width: 50%;
+  @include mobile {
+    display: none;
+  }
+}
+
+.zeroResultat {
+  visibility: hidden;
+}
+
+.blocResultat {
+  width: 50%;
+  @include mobile {
+    width: 100%;
+  }
+}
+
 // Fiche de l'artisan
 
 .imageFiche {

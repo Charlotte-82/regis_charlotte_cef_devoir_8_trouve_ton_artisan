@@ -35,6 +35,7 @@ exports.getArtisanById = async (id) => {
       {
         model: Specialite,
         attributes: ["specialite_libelle"],
+        include: [{ model: Categorie, attributes: ["categorie_libelle"] }],
       },
     ],
   });

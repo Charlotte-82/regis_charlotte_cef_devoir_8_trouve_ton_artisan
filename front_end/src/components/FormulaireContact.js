@@ -1,9 +1,10 @@
 import { useState } from "react";
 
-function FormulaireContact({ artisanNom }) {
+function FormulaireContact({ artisanNom, artisanEmail }) {
   const [formData, setFormData] = useState({
     nom: "",
     email: "",
+    telephone: "",
     objet: "",
     message: "",
   });
@@ -17,15 +18,34 @@ function FormulaireContact({ artisanNom }) {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Simulation d'envoi (tu pourrais brancher ici un service mail)
-    console.log("Message envoyé à", artisanNom);
-    console.log("Contenu :", formData);
+    try {
+      const response = await fetch("http://localhost:3001/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          ...formData,
+          destinataire: artisanEmail,
+        }),
+      });
 
-    setEnvoiReussi(true);
-    setFormData({ nom: "", email: "", message: "" });
+      if (response.ok) {
+        setEnvoiReussi(true);
+        setFormData({
+          nom: "",
+          email: "",
+          telephone: "",
+          objet: "",
+          message: "",
+        });
+      } else {
+        console.error("Erreur lors de l'envoi du message");
+      }
+    } catch (err) {
+      console.error("Erreur réseau :", err);
+    }
   };
 
   return (
@@ -100,6 +120,18 @@ function FormulaireContact({ artisanNom }) {
             rows="5"
             required
           ></textarea>
+
+          <div className="radioOption">
+            <input type="radio" name="contact" className="radioFormulaire" />
+            <label className="labelRadio">Je veux être contacté par mail</label>
+          </div>
+
+          <div className="radioOption">
+            <input type="radio" name="contact" className="radioFormulaire" />
+            <label className="labelRadio">
+              Je veux être contacté par téléphone
+            </label>
+          </div>
         </div>
 
         <button type="submit" className="boutonBasPage">
