@@ -1,11 +1,12 @@
-import React from "react";
 import Logo from "../assets/images/Logo.png";
 
 function Footer() {
   return (
     <div className="footer">
-      <div className="d-flex justify-content-center px-3 py-2">
-        <img src={Logo} className="logoFooter" alt="Trouve ton artisan!" />
+      <div className="d-flex justify-content-center px-3 py-2 colonneAdresse">
+        <div className="imageFooter">
+          <img src={Logo} className="logoFooter" alt="Trouve ton artisan!" />
+        </div>
         <div className="d-flex flex-column">
           <p className="titreFooter">Antenne de Lyon</p>
           <p className="contentFooter">101 cours Charlemagne</p>
@@ -16,10 +17,7 @@ function Footer() {
         </div>
       </div>
       <hr className="hrFooter" />
-      <div
-        className="d-flex justify-content-center"
-        style={{ paddingBottom: "2em" }}
-      >
+      <div className="d-flex justify-content-center pb-5">
         <a href="/construction" className="footerLink">
           Mentions légales
         </a>

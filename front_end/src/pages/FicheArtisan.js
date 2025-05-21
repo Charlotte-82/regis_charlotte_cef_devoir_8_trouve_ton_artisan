@@ -2,10 +2,13 @@ import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { getArtisanById } from "../services/artisansServices";
 import FormulaireContact from "../components/FormulaireContact";
+import Chevron from "../assets/images/chevron-droit.png";
 
 function FicheArtisan() {
   const { id } = useParams();
+
   console.log("ID reçu dans URL :", id);
+
   const [artisan, setArtisan] = useState(null);
 
   useEffect(() => {
@@ -24,7 +27,7 @@ function FicheArtisan() {
 
   const noteEtoile = (note) => {
     const etoiles = [];
-    const arrondi = Math.round(note * 2) / 2; // arrondi à 0.5 près
+    const arrondi = Math.round(note * 2) / 2;
 
     for (let i = 1; i <= 5; i++) {
       if (i <= arrondi) {
@@ -41,25 +44,67 @@ function FicheArtisan() {
 
   return (
     <div className="container mt-4">
+      <a href="/" className="lienChemin">
+        Accueil
+      </a>
+      <span>
+        <img
+          src={Chevron}
+          alt="icône de chevron vers la droite"
+          className="chevronMenu"
+        ></img>
+      </span>
+      <a href="/categoriepage" className="lienChemin">
+        Catégorie
+      </a>
+      <span>
+        <img
+          src={Chevron}
+          alt="icône de chevron vers la droite"
+          className="chevronMenu"
+        ></img>
+      </span>
+      <a
+        href={`/par-categorie/${artisan?.specialite?.specialite_libelle}`}
+        className="lienChemin"
+      >
+        {artisan?.specialite?.specialite_libelle}
+      </a>{" "}
+      <span>
+        <img
+          src={Chevron}
+          alt="icône de chevron vers la droite"
+          className="chevronMenu"
+        ></img>
+      </span>
+      <a href={`/ficheartisan/${artisan?.id_artisan}`} className="lienChemin">
+        {artisan?.artisan_nom}
+      </a>{" "}
+      <span>
+        <img
+          src={Chevron}
+          alt="icône de chevron vers la droite"
+          className="chevronMenu"
+        ></img>
+      </span>
       <div>
-        <h2>{artisan?.artisan_nom}</h2>
+        <h1>{artisan?.artisan_nom}</h1>
+        <hr className="hrTitre2"></hr>
+        <h2>{artisan?.specialite?.specialite_libelle || "Non renseignée"}</h2>
         <div className="row">
-          <div className="col">
+          <div className="col colonneImage">
             <img
               src={artisan?.artisan_image}
               alt={artisan?.artisan_nom}
               className="imageFiche"
             />
           </div>
-          <div className="col" style={{ alignContent: "center" }}>
+          <div className="col colonneVille">
             <p>
               <strong>Ville :</strong>{" "}
               {artisan?.ville?.ville_nom || "Non renseignée"}
             </p>
-            <p>
-              <strong>Spécialité :</strong>{" "}
-              {artisan?.specialite?.specialite_libelle || "Non renseignée"}
-            </p>
+
             <p>{artisan?.artisan_apropos}</p>
             <p>
               <strong>Note :</strong> {noteEtoile(Number(artisan.artisan_note))}
@@ -83,7 +128,6 @@ function FicheArtisan() {
           </div>
         </div>
       </div>
-      <hr />
       <FormulaireContact artisanNom={artisan.artisan_nom} />
     </div>
   );

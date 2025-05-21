@@ -28,7 +28,10 @@ function FiltreArtisans() {
   useEffect(() => {
     if (specialiteChoisie) {
       getVillesBySpecialite(specialiteChoisie)
-        .then((data) => setVilles(data))
+        .then((data) => {
+          console.log("Villes reçues :", data);
+          setVilles(data);
+        })
         .catch(console.error);
     } else {
       setVilles([]);

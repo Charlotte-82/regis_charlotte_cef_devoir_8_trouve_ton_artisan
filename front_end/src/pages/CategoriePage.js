@@ -1,4 +1,3 @@
-import React from "react";
 import AlimCat from "../assets/images/alimentationCat.jpg";
 import FabCat from "../assets/images/fabricationCat.jpg";
 import BatCat from "../assets/images/batimentCat.jpg";
@@ -8,51 +7,39 @@ import Chevron from "../assets/images/chevron-droit.png";
 function CategoriePage() {
   return (
     <div>
-      {/* début entête */}
-      <div style={{ marginTop: "1em" }}>
-        {/* chemin emprunté par l'utilisateur depuis la page d'accueil */}
-        <a href="/" style={{ color: "#0074c7" }}>
-          Accueil
-        </a>
-        <span>
-          <img
-            src={Chevron}
-            alt="icône de chevron vers la droite"
-            className="chevronMenu"
-          ></img>
-        </span>
-        <a href="/categoriepage" style={{ color: "#0074c7" }}>
-          Catégorie
-        </a>
-        <span>
-          <img
-            src={Chevron}
-            alt="icône de chevron vers la droite"
-            className="chevronMenu"
-          ></img>
-        </span>
-
-        {/* titre page */}
-        <h1>Catégories d'artisanat</h1>
-      </div>
-      {/* fin entête */}
-      {/* début contenu page catégorie */}
-      <div
-        className="d-flex justify-content-around px-3 py-4"
-        style={{ gap: "20px" }}
-      >
+      {/* chemin emprunté par l'utilisateur depuis la page d'accueil */}
+      <a href="/" className="lienChemin">
+        Accueil
+      </a>
+      <span>
+        <img
+          src={Chevron}
+          alt="icône de chevron vers la droite"
+          className="chevronMenu"
+        ></img>
+      </span>
+      <a href="/categoriepage" className="lienChemin">
+        Catégorie
+      </a>
+      <span>
+        <img
+          src={Chevron}
+          alt="icône de chevron vers la droite"
+          className="chevronMenu"
+        ></img>
+      </span>
+      {/* contenu page */}
+      <h1>Catégories d'artisanat</h1>
+      <div className="d-flex justify-content-around px-3 py-4">
         {/* catégorie 1 Alimentation */}
-        <div class="card" style={{ width: "35%", border: "none" }}>
-          <div class="card-body">
+        <div className="card catCard">
+          <div className="card-body">
             <hr className="hrTitre2" />
             <h2>Alimentation</h2>
             <a href="/par-categorie/alimentation">
               <button className="boutonDecouvrir">
                 Découvrir
-                <i
-                  className="bi bi-arrow-right"
-                  style={{ marginLeft: "2em" }}
-                ></i>
+                <i className="bi bi-arrow-right flecheDecouvrir"></i>
               </button>
             </a>
           </div>
@@ -64,17 +51,14 @@ function CategoriePage() {
         </div>
 
         {/* catégorie 2 Fabrication */}
-        <div class="card" style={{ width: "35%", border: "none" }}>
+        <div class="card catCard">
           <div class="card-body">
             <hr className="hrTitre2" />
             <h2>Fabrication</h2>
             <a href="/par-categorie/fabrication">
               <button className="boutonDecouvrir">
                 Découvrir
-                <i
-                  className="bi bi-arrow-right"
-                  style={{ marginLeft: "2em" }}
-                ></i>
+                <i className="bi bi-arrow-right flecheDecouvrir"></i>
               </button>
             </a>
           </div>
@@ -85,23 +69,16 @@ function CategoriePage() {
           />
         </div>
       </div>
-
       {/* catégorie 3 Bâtiment */}
-      <div
-        className="d-flex justify-content-around px-3 py-4"
-        style={{ gap: "20px" }}
-      >
-        <div class="card" style={{ width: "35%", border: "none" }}>
+      <div className="d-flex justify-content-around px-3 py-4">
+        <div class="card catCard">
           <div class="card-body">
             <hr className="hrTitre2" />
             <h2>Bâtiment</h2>
             <a href="/par-categorie/batiment">
               <button className="boutonDecouvrir">
                 Découvrir
-                <i
-                  className="bi bi-arrow-right"
-                  style={{ marginLeft: "2em" }}
-                ></i>
+                <i className="bi bi-arrow-right flecheDecouvrir"></i>
               </button>
             </a>
           </div>
@@ -113,17 +90,14 @@ function CategoriePage() {
         </div>
 
         {/* catégorie 4 Services */}
-        <div class="card" style={{ width: "35%", border: "none" }}>
+        <div class="card catCard">
           <div class="card-body">
             <hr className="hrTitre2" />
             <h2>Services</h2>
             <a href="/par-categorie/services">
               <button className="boutonDecouvrir">
                 Découvrir
-                <i
-                  className="bi bi-arrow-right"
-                  style={{ marginLeft: "2em" }}
-                ></i>
+                <i className="bi bi-arrow-right flecheDecouvrir"></i>
               </button>
             </a>
           </div>

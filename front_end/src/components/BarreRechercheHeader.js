@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 function BarreRecherche() {
   const [recherche, setRecherche] = useState("");
   const navigate = useNavigate();
+  const [afficherInput, setAfficherInput] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -12,31 +13,30 @@ function BarreRecherche() {
     }
   };
 
+  const estMobile = window.matchMedia("(max-width: 768px)").matches;
+
   return (
     <form onSubmit={handleSubmit} className="barreDeRecherche">
-      <input
-        type="text"
-        value={recherche}
-        onChange={(e) => setRecherche(e.target.value)}
-        style={{
-          border: "none",
-          outline: "none",
-          flex: 1,
-        }}
-      />
+      {(afficherInput || !estMobile) && (
+        <input
+          type="text"
+          value={recherche}
+          onChange={(e) => setRecherche(e.target.value)}
+          autoFocus
+        />
+      )}
       <button
-        type="submit"
-        style={{
-          background: "none",
-          border: "none",
-          cursor: "pointer",
-          padding: 0,
+        className="boutonLoupe"
+        type="button"
+        onClick={() => {
+          if (estMobile) {
+            setAfficherInput((prev) => !prev);
+          } else {
+            handleSubmit(new Event("submit"));
+          }
         }}
       >
-        <i
-          className="fas fa-search"
-          style={{ color: "#0074c7", fontSize: "1rem" }}
-        ></i>
+        <i className="fas fa-search imageLoupe"></i>
       </button>
     </form>
   );

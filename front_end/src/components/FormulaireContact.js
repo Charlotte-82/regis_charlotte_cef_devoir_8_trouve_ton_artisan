@@ -30,9 +30,10 @@ function FormulaireContact({ artisanNom }) {
 
   return (
     <div className="mt-5">
-      <h3>
+      <hr className="hrTitre2"></hr>
+      <h2>
         Contactez l’artisan <strong>{artisanNom}</strong>
-      </h3>
+      </h2>
 
       {envoiReussi && (
         <div className="alert alert-success">

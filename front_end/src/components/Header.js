@@ -5,18 +5,18 @@ import BarreRecherche from "./BarreRechercheHeader";
 
 function Header() {
   return (
-    <div className="d-flex justify-content-between align-items-start px-3 py-2 headerBox">
+    <div className="d-flex headerBox">
       <div className="d-flex align-items-center">
         <a href="/">
           <img src={Architecte} className="architecte" alt="icône d'artisan" />
-          <br className="retourLogo" />
           <img src={Logo} className="logo" alt="Trouve ton artisan!" />
         </a>
       </div>
-      <div className="d-flex flex-column justify-content-between align-items-end">
-        {/* barre de recherche */}
-        <BarreRecherche />
-        {/* barre de navigation */}
+
+      <div className="d-flex flex-column align-items-end headerDesktop">
+        <div className="barre">
+          <BarreRecherche />
+        </div>
         <nav className="navbar navbar-expand-lg navbar-light bg-light menu">
           <div className="container-fluid">
             <button

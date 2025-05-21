@@ -17,7 +17,7 @@ function TopArtisans() {
       <div className="row">
         {Array.isArray(artisans) &&
           artisans.map((a, index) => (
-            <div className="col-md-4 d-flex justify-content-around" key={index}>
+            <div className="col-md-4 d-flex divCard" key={index}>
               <div className="card mb-4 topCard">
                 {a.image && (
                   <img
@@ -39,15 +39,12 @@ function TopArtisans() {
                   <p className="noteTop">
                     <strong>Note :</strong> {a.note}/5
                   </p>
-                  <p className="noteTop">{a.apropos}</p>
+                  <p className="proposTop">{a.apropos}</p>
                 </div>
                 <Link to={`/ficheartisan/${a.id}`}>
                   <button className="boutonDecouvrir">
                     Découvrir
-                    <i
-                      className="bi bi-arrow-right"
-                      style={{ marginLeft: "2em" }}
-                    ></i>
+                    <i className="bi bi-arrow-right flecheDecouvrir"></i>
                   </button>
                 </Link>
               </div>
